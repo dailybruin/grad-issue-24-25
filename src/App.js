@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import './App.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import ArticleCard from "./components/ArticleCard";
+import bubble_img from "./images/bubbles.png"
 
 function App() {
   const [ data, setData ] = useState(null);
@@ -16,6 +18,11 @@ function App() {
     <div className="App">
       <Header/>
       Hello Daily Bruin!
+      <ArticleCard
+        image={bubble_img}
+        article_url={"https://www.youtube.com/watch?v=0cHtUNmdq_c"}
+        article_text={"This is supposed to be some goated text."}
+      />
       <Footer/>
     </div>
   );
