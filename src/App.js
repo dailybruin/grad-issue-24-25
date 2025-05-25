@@ -20,8 +20,10 @@ function App() {
       Hello Daily Bruin!
       <ArticleCard
         image={bubble_img}
-        article_url={"https://www.youtube.com/watch?v=0cHtUNmdq_c"}
-        article_text={"This is supposed to be some goated text."}
+        article_url="https://www.youtube.com/watch?v=0cHtUNmdq_c"
+        article_text="Headline Goes Here! Here are some more words until we reach the 82 character limit"
+        author_first="John"
+        author_last="Doe"
       />
       <Footer/>
     </div>

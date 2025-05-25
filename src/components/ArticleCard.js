@@ -1,7 +1,13 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import '../fonts/fonts.css';
 
-const ArticleCard = ({ image, article_url, article_text }) => {
+const ArticleCard = ({ image, article_url, article_text, author_first, author_last }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const TEXT_CHAR_LIMIT = 82
+
+  if (article_text.length > TEXT_CHAR_LIMIT) {
+    console.error("Over " + TEXT_CHAR_LIMIT + " char article text: length is " + article_text.length);
+  }
 
   const cardStyle = {
     backgroundColor: 'black',
@@ -24,28 +30,33 @@ const ArticleCard = ({ image, article_url, article_text }) => {
   };
 
   const imageStyle = {
-  width: '100%',
-  height: '100%',
-  objectFit: 'cover',
-  filter: isHovered ? 'blur(10px)' : 'blur(0)',
-  transition: 'filter 0.2s ease-in-out',
-};
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    filter: isHovered ? 'blur(10px)' : 'blur(0)',
+    transition: 'filter 0.2s ease-in-out',
+  };
 
   const textOverlayStyle = {
     position: 'absolute',
     top: 0,
     left: 0,
-    width: '100%',
-    height: '96%',
-    display: isHovered ? 'flex' : 'none',
+    width: '92%',
+    height: '90%',
+    display: isHovered ? 'block' : 'none',
     alignItems: 'center',
     justifyContent: 'center',
+    padding: '4%',
+    paddingTop: '7%',
     color: 'white',
-    paddingTop: '2%',
-    paddingBottom: '2%',
     textAlign: 'center',
-    fontSize: '14px',
+    fontFamily: 'Joan, serif',
+    fontSize: '27px',
   };
+
+  const authorStyle = {
+    fontSize: '18px'
+  }
 
   return (
     
@@ -56,7 +67,15 @@ const ArticleCard = ({ image, article_url, article_text }) => {
         >
             <a href={article_url} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
                 <img src={image} style={imageStyle} />
-                <div style={textOverlayStyle}>{article_text}</div>
+
+                <div style={textOverlayStyle}>
+                  {article_text}
+                  <br/>
+                  <br/>
+                  <div style={authorStyle}>
+                    By {author_first} {author_last}
+                  </div>
+                </div>
             </a>
         </div>
       </div>
