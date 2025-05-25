@@ -2,7 +2,16 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import { Multimedia, Prime, TheQuad } from "./components/ArticleWindows";
+import {
+  News,
+  Sports,
+  Arts,
+  Opinion,
+  TheQuad,
+  Multimedia,
+  Prime,
+  Thirty,
+} from "./components/ArticleWindows";
 
 function App() {
   const [data, setData] = useState(null);
@@ -19,11 +28,14 @@ function App() {
     data && (
       <div className="App">
         <Header />
-
+        <News />
+        <Sports />
+        <Arts />
+        <Opinion />
+        <TheQuad />
         <Multimedia />
         <Prime />
-        <TheQuad />
-
+        <Thirty />
         <Footer />
       </div>
     )

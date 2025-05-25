@@ -10,23 +10,36 @@ const Window = ({
   isLarge = false,
 }) => {
   const [isMobile, setIsMobile] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
-      setIsMobile(width <= 768); // lowk confused in mobile
+      // idk if there is a better way to do it but this is how I thought of doing mobile... we can't simply use size of window
+      // because that would interfere with the laptop resizing logic
+      setIsMobile(
+        /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+          navigator.userAgent
+        )
+      );
+      setWindowWidth(width);
     };
 
-    handleResize(); // maybe we have to resize?
+    handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // calculate how much we should scale it by depending on what our window width is
+  const scale = Math.min(windowWidth / 1070, 1);
+  const scaledTopOffset = topOffset * scale;
+
+  // this is what we had before, except everything is more dynamic now
   const containerStyle = {
     position: "relative",
     display: "block",
     width: "fit-content",
-    margin: isMobile ? "30px auto" : "50px auto", // space between each window
+    margin: isMobile ? "30px auto" : "50px auto",
   };
 
   const imageStyle = {
@@ -36,10 +49,9 @@ const Window = ({
     height: "auto",
   };
 
-  // *sob* more mobile attempt
   const overlayContainer = {
     position: "absolute",
-    top: isMobile ? `${Math.max(150, topOffset * 0.4)}px` : `${topOffset}px`,
+    top: `${scaledTopOffset}px`,
     left: 0,
     width: "100%",
     display: "flex",
@@ -51,54 +63,55 @@ const Window = ({
   const flexOverlayRow = {
     display: "flex",
     justifyContent: "center",
-    gap: isMobile ? "10px" : "0px",
-    marginBottom: isMobile ? "10px" : "0px",
-    flexWrap: isMobile ? "wrap" : "nowrap",
+    gap: "0px",
+    marginBottom: "0px",
   };
 
+  // determining how many articles in a row
   let finalArticlesPerRow;
   if (isMobile) {
-    // mobile: 2 columns per row
     finalArticlesPerRow = 2;
-  } else if (articlesPerRow !== null) {
-    finalArticlesPerRow = articlesPerRow;
   } else {
-    // desktop: 3 columns per row
     finalArticlesPerRow = 3;
   }
 
-  // arrange the article cards together into a grid
+  // arrange all the articles into the rows
   const rows = [];
   for (let i = 0; i < articles.length; i += finalArticlesPerRow) {
     rows.push(articles.slice(i, i + finalArticlesPerRow));
   }
-
   return (
-    <div style={containerStyle}>
-      <img
-        src={backgroundImage}
-        alt={`${windowTitle} Window`}
-        style={imageStyle}
-      />
-      <div style={overlayContainer}>
-        {rows.map((row, rowIndex) => (
-          <div key={rowIndex} style={flexOverlayRow}>
-            {row.map((article, cardIndex) => (
-              <ArticleCard
-                key={`${rowIndex}-${cardIndex}`}
-                image={article.image}
-                article_url={article.article_url}
-                article_text={article.article_text}
-                author_first={article.author_first}
-                author_last={article.author_last}
-                isLarge={isLarge && !isMobile}
-                isMobile={isMobile}
-                isPlaceholder={article.isPlaceholder}
-                placeholderColor={article.placeholderColor}
-              />
+    <div style={{ marginBottom: "160px" }}>
+      {" "}
+      <div style={containerStyle}>
+        <div style={{ position: "relative", width: "fit-content" }}>
+          <img
+            src={backgroundImage}
+            alt={`${windowTitle} Window`}
+            style={imageStyle}
+          />
+          <div style={overlayContainer}>
+            {rows.map((row, rowIndex) => (
+              <div key={rowIndex} style={flexOverlayRow}>
+                {row.map((article, cardIndex) => (
+                  <ArticleCard
+                    key={`${rowIndex}-${cardIndex}`}
+                    image={article.image}
+                    article_url={article.article_url}
+                    article_text={article.article_text}
+                    author_first={article.author_first}
+                    author_last={article.author_last}
+                    isLarge={isLarge && !isMobile}
+                    isMobile={isMobile}
+                    isPlaceholder={article.isPlaceholder}
+                    placeholderColor={article.placeholderColor}
+                    windowWidth={windowWidth}
+                  />
+                ))}
+              </div>
             ))}
           </div>
-        ))}
+        </div>
       </div>
     </div>
   );

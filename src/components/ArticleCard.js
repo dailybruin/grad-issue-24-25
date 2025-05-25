@@ -11,16 +11,21 @@ const ArticleCard = ({
   isMobile = false,
   isPlaceholder = false,
   placeholderColor = "#ccc",
+  windowWidth = 1200,
 }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   if (isPlaceholder) {
+    const baseOuter = 305;
+    const baseInner = 260;
+    const scale = Math.min(windowWidth / 1070, 1);
+
     return (
       <div
         style={{
           backgroundColor: "black",
-          width: "305px",
-          height: "310px",
+          width: `${baseOuter * scale}px`,
+          height: `${310 * scale}px`,
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -29,8 +34,8 @@ const ArticleCard = ({
         <div
           style={{
             backgroundColor: placeholderColor,
-            width: "260px",
-            height: "260px",
+            width: `${baseInner * scale}px`,
+            height: `${baseInner * scale}px`,
             borderRadius: "25px",
           }}
         />
@@ -53,22 +58,26 @@ const ArticleCard = ({
       };
       // wrote this for prime
     } else if (isLarge) {
+      const scale = Math.min(windowWidth / 1070, 1); // same base as others
       return {
-        width: 900,
-        height: 900,
-        innerWidth: 850,
-        innerHeight: 850,
-        fontSize: 36,
-        authorSize: 24,
+        width: 900 * scale,
+        height: 900 * scale,
+        innerWidth: 850 * scale,
+        innerHeight: 850 * scale,
+        fontSize: 36 * scale,
+        authorSize: 24 * scale,
       };
+      // "regular" card on a laptop
     } else {
+      const baseWidth = 305;
+      const scale = Math.min(windowWidth / 1070, 1); // this scaling is to reduce the SIZE of the article cards as the window decreases
       return {
-        width: 305,
-        height: 310,
-        innerWidth: 260,
-        innerHeight: 260,
-        fontSize: 27,
-        authorSize: 18,
+        width: baseWidth * scale,
+        height: 310 * scale,
+        innerWidth: 260 * scale,
+        innerHeight: 260 * scale,
+        fontSize: 27 * scale,
+        authorSize: 18 * scale,
       };
     }
   };
@@ -76,6 +85,7 @@ const ArticleCard = ({
   const dimensions = getCardDimensions();
   const TEXT_CHAR_LIMIT = isMobile ? 100 : isLarge ? 150 : 82;
 
+  // lowk not sure what this is for but it was in the code before so I'll keep it (added extra checking because of uncaught expceptions)
   if (!isPlaceholder && article_text && article_text.length > TEXT_CHAR_LIMIT) {
     console.error(
       "Over " +
@@ -85,6 +95,7 @@ const ArticleCard = ({
     );
   }
 
+  // this is similar to what we had before, just more dynamic now
   const cardStyle = {
     backgroundColor: "black",
     width: `${dimensions.width}px`,
@@ -108,7 +119,7 @@ const ArticleCard = ({
     width: "100%",
     height: "100%",
     objectFit: "cover",
-    filter: isHovered && !isMobile && !isPlaceholder ? "blur(10px)" : "blur(0)", // Added !isPlaceholder check
+    filter: isHovered && !isMobile && !isPlaceholder ? "blur(10px)" : "blur(0)",
     transition: "filter 0.2s ease-in-out",
   };
 
@@ -118,7 +129,7 @@ const ArticleCard = ({
     left: 0,
     width: "92%",
     height: "90%",
-    display: isHovered && !isMobile && !isPlaceholder ? "block" : "none", // Added !isPlaceholder check
+    display: isHovered && !isMobile && !isPlaceholder ? "block" : "none",
     alignItems: "center",
     justifyContent: "center",
     padding: "4%",
@@ -156,8 +167,8 @@ const ArticleCard = ({
     <div style={cardStyle}>
       <div
         style={innerStyle}
-        onMouseEnter={() => !isMobile && !isPlaceholder && setIsHovered(true)} // Added !isPlaceholder check
-        onMouseLeave={() => !isMobile && !isPlaceholder && setIsHovered(false)} // Added !isPlaceholder check
+        onMouseEnter={() => !isMobile && !isPlaceholder && setIsHovered(true)} // this is to make sure that there is no blur
+        onMouseLeave={() => !isMobile && !isPlaceholder && setIsHovered(false)} // or hovering effect for place holders (might need to change for mobile?)
       >
         <a
           href={article_url}
@@ -168,28 +179,26 @@ const ArticleCard = ({
           <img src={image} style={imageStyle} alt={article_text} />
 
           {/* desktop hover */}
-          {!isMobile &&
-            !isPlaceholder && ( // Added !isPlaceholder check
-              <div style={textOverlayStyle}>
-                {article_text}
-                <br />
-                <br />
-                <div style={authorStyle}>
-                  By {author_first} {author_last}
-                </div>
+          {!isMobile && !isPlaceholder && (
+            <div style={textOverlayStyle}>
+              {article_text}
+              <br />
+              <br />
+              <div style={authorStyle}>
+                By {author_first} {author_last}
               </div>
-            )}
+            </div>
+          )}
 
-          {/* no-hover on mobile */}
-          {isMobile &&
-            !isPlaceholder && ( // Added !isPlaceholder check
-              <div style={mobileTextStyle}>
-                <div>{article_text}</div>
-                <div style={mobileAuthorStyle}>
-                  By {author_first} {author_last}
-                </div>
+          {/* no hover on mobile (change?) */}
+          {isMobile && !isPlaceholder && (
+            <div style={mobileTextStyle}>
+              <div>{article_text}</div>
+              <div style={mobileAuthorStyle}>
+                By {author_first} {author_last}
               </div>
-            )}
+            </div>
+          )}
         </a>
       </div>
     </div>
