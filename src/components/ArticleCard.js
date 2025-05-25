@@ -11,13 +11,12 @@ const ArticleCard = ({ image, article_url, article_text, author_first, author_la
 
   const cardStyle = {
     backgroundColor: 'black',
-    width: '300px',
-    height: '300px',
+    width: '305px',
+    height: '310px',
     color: 'white',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: '15px',
   };
 
   const innerStyle = {
