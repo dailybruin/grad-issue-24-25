@@ -1,6 +1,6 @@
 import ArticleCard from "./ArticleCard";
 import { useState, useEffect } from "react";
-import { WINDOW_WIDTH } from "./constants.js";
+import { CARD_BACK_HEIGHT, WINDOW_WIDTH } from "./constants.js";
 
 const Window = ({
   backgroundImage,
@@ -8,6 +8,7 @@ const Window = ({
   articles = [],
   articlesPerRow = null,
   topOffset = 350,
+  incCardHeightBy = 0,  // Used to fill out inside the window by barely changing card height
   isLarge = false,
 }) => {
   const [isMobile, setIsMobile] = useState(false);
@@ -51,6 +52,7 @@ const Window = ({
     height: "auto",
     position: "relative",
     zIndex: 2,  // Window should be above cards
+    pointerEvents: "none"  // Allows pointer events to go through the window (which is on top of the cards)
   };
 
   // The article cards (all windows)
@@ -112,6 +114,7 @@ const Window = ({
                     isPlaceholder={article.isPlaceholder}
                     placeholderColor={article.placeholderColor}
                     windowWidth={windowWidth}
+                    cardHeight={CARD_BACK_HEIGHT + incCardHeightBy}
                   />
                 ))}
               </div>

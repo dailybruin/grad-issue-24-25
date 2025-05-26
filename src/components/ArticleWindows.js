@@ -123,7 +123,6 @@ const News = () => {
       backgroundImage={newsBack}
       windowTitle="NEWS"
       articles={newsArticles}
-      topOffset={350}
     />
   );
 };
@@ -236,7 +235,6 @@ const Sports = () => {
       backgroundImage={sportsBack}
       windowTitle="SPORTS"
       articles={sportsArticles}
-      topOffset={350}
     />
   );
 };
@@ -319,7 +317,7 @@ const Arts = () => {
       backgroundImage={artsBack}
       windowTitle="ARTS"
       articles={artsArticles}
-      topOffset={350}
+      incCardHeightBy={1}
     />
   );
 };
@@ -359,7 +357,7 @@ const Opinion = () => {
       backgroundImage={opinionBack}
       windowTitle="OPINION"
       articles={opinionArticles}
-      topOffset={350}
+      incCardHeightBy={4}
     />
   );
 };
@@ -400,7 +398,7 @@ const TheQuad = () => {
       backgroundImage={quadBack}
       windowTitle="THE QUAD"
       articles={quadArticles}
-      topOffset={350}
+      incCardHeightBy={5}
     />
   );
 };
@@ -519,7 +517,6 @@ const Multimedia = () => {
       backgroundImage={multimediaBack}
       windowTitle="MULTIMEDIA"
       articles={multimediaArticles}
-      topOffset={350}
     />
   );
 };
@@ -540,7 +537,6 @@ const Prime = () => {
       backgroundImage={primeBack}
       windowTitle="PRIME"
       articles={primeArticles}
-      topOffset={350}
       isLarge={true}
     />
   );
@@ -787,7 +783,6 @@ const Thirty = () => {
       backgroundImage={thirtyBack}
       windowTitle="THIRTY"
       articles={thirtyArticles}
-      topOffset={350}
     />
   );
 };

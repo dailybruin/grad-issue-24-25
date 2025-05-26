@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "../fonts/fonts.css";
-import { CARD_BACK_WIDTH, WINDOW_WIDTH } from "./constants.js";
+import { CARD_BACK_WIDTH, CARD_BACK_HEIGHT, WINDOW_WIDTH } from "./constants.js";
 
 const ArticleCard = ({
   image,
@@ -13,6 +13,7 @@ const ArticleCard = ({
   isPlaceholder = false,
   placeholderColor = "#ccc",
   windowWidth = 1200,
+  cardHeight = CARD_BACK_HEIGHT,
 }) => {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -25,7 +26,7 @@ const ArticleCard = ({
         style={{
           backgroundColor: "black",
           width: `${CARD_BACK_WIDTH * scale}px`,
-          height: `${CARD_BACK_WIDTH * scale}px`,
+          height: `${cardHeight * scale}px`,
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -72,7 +73,7 @@ const ArticleCard = ({
       const scale = Math.min(windowWidth / WINDOW_WIDTH, 1); // this scaling is to reduce the SIZE of the article cards as the window decreases
       return {
         width: CARD_BACK_WIDTH * scale,
-        height: CARD_BACK_WIDTH * scale,
+        height: cardHeight * scale,
         innerWidth: 260 * scale,
         innerHeight: 260 * scale,
         fontSize: 27 * scale,
