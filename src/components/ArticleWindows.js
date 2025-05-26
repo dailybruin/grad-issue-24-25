@@ -123,6 +123,7 @@ const News = () => {
       backgroundImage={newsBack}
       windowTitle="NEWS"
       articles={newsArticles}
+      shrinksAt={1051}
     />
   );
 };
@@ -235,6 +236,7 @@ const Sports = () => {
       backgroundImage={sportsBack}
       windowTitle="SPORTS"
       articles={sportsArticles}
+      shrinksAt={1053}
     />
   );
 };
@@ -358,6 +360,7 @@ const Opinion = () => {
       windowTitle="OPINION"
       articles={opinionArticles}
       incCardHeightBy={4}
+      shrinksAt={1051}
     />
   );
 };
@@ -783,6 +786,8 @@ const Thirty = () => {
       backgroundImage={thirtyBack}
       windowTitle="THIRTY"
       articles={thirtyArticles}
+      is30={true}
+      shrinksAt={1064}
     />
   );
 };

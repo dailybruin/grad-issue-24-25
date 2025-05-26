@@ -13,19 +13,21 @@ const ArticleCard = ({
   isPlaceholder = false,
   placeholderColor = "#ccc",
   windowWidth = 1200,
+  cardWidth = CARD_BACK_WIDTH,
   cardHeight = CARD_BACK_HEIGHT,
+  shrinksAt = WINDOW_WIDTH
 }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   if (isPlaceholder) {
     const baseInner = 260;
-    const scale = Math.min(windowWidth / WINDOW_WIDTH, 1);
+    const scale = Math.min(windowWidth / shrinksAt, 1);
 
     return (
       <div
         style={{
           backgroundColor: "black",
-          width: `${CARD_BACK_WIDTH * scale}px`,
+          width: `${cardWidth * scale}px`,
           height: `${cardHeight * scale}px`,
           display: "flex",
           alignItems: "center",
@@ -59,7 +61,7 @@ const ArticleCard = ({
       };
       // wrote this for prime
     } else if (isLarge) {
-      const scale = Math.min(windowWidth / WINDOW_WIDTH, 1); // same base as others
+      const scale = Math.min(windowWidth / shrinksAt, 1); // same base as others
       return {
         width: 900 * scale,
         height: 900 * scale,
@@ -70,9 +72,9 @@ const ArticleCard = ({
       };
       // "regular" card on a laptop
     } else {
-      const scale = Math.min(windowWidth / WINDOW_WIDTH, 1); // this scaling is to reduce the SIZE of the article cards as the window decreases
+      const scale = Math.min(windowWidth / shrinksAt, 1); // this scaling is to reduce the SIZE of the article cards as the window decreases
       return {
-        width: CARD_BACK_WIDTH * scale,
+        width: cardWidth * scale,
         height: cardHeight * scale,
         innerWidth: 260 * scale,
         innerHeight: 260 * scale,

@@ -1,6 +1,6 @@
 import ArticleCard from "./ArticleCard";
 import { useState, useEffect } from "react";
-import { CARD_BACK_HEIGHT, WINDOW_WIDTH } from "./constants.js";
+import { CARD_BACK_HEIGHT, CARD_BACK_WIDTH, WINDOW_WIDTH } from "./constants.js";
 
 const Window = ({
   backgroundImage,
@@ -10,6 +10,8 @@ const Window = ({
   topOffset = 350,
   incCardHeightBy = 0,  // Used to fill out inside the window by barely changing card height
   isLarge = false,
+  is30 = false,
+  shrinksAt = WINDOW_WIDTH
 }) => {
   const [isMobile, setIsMobile] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -33,8 +35,9 @@ const Window = ({
   }, []);
 
   // calculate how much we should scale it by depending on what our window width is
-  const scale = Math.min(windowWidth / WINDOW_WIDTH, 1);
+  const scale = Math.min(windowWidth / shrinksAt, 1);
   const scaledTopOffset = topOffset * scale;
+  const thirtyMidPaneHeight = 75 * scale;
 
   // this is what we had before, except everything is more dynamic now
   const containerStyle = {
@@ -100,7 +103,13 @@ const Window = ({
           />
           <div style={overlayContainer}>
             {rows.map((row, rowIndex) => (
-              <div key={rowIndex} style={flexOverlayRow}>
+              <>
+                {/* Add a space after 5 rows only for 30 window */}
+                {is30 && rowIndex==5 && (
+                  <div style={{ height: thirtyMidPaneHeight }} />  // Height of middle pane for 30
+                )}
+
+                <div key={rowIndex} style={flexOverlayRow}>
                 {row.map((article, cardIndex) => (
                   <ArticleCard
                     key={`${rowIndex}-${cardIndex}`}
@@ -114,10 +123,21 @@ const Window = ({
                     isPlaceholder={article.isPlaceholder}
                     placeholderColor={article.placeholderColor}
                     windowWidth={windowWidth}
-                    cardHeight={CARD_BACK_HEIGHT + incCardHeightBy}
+                    cardWidth={!is30 ? CARD_BACK_WIDTH : CARD_BACK_WIDTH + 5}  // To fill in whitespace in 30 window
+                    cardHeight={
+                      !is30 ?
+                        CARD_BACK_HEIGHT + incCardHeightBy
+                      // Reason for this below - bottom half of 30 window is smaller than top half
+                      : (rowIndex <= 4) ?  // Top half of 30 window: don't change card height
+                        CARD_BACK_HEIGHT
+                      : // Bottom half of 30 window: smudge cards together more vertically
+                        CARD_BACK_HEIGHT - 7  
+                    }
+                    shrinksAt={shrinksAt}
                   />
                 ))}
               </div>
+            </>
             ))}
           </div>
         </div>
