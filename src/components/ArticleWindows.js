@@ -525,7 +525,7 @@ const Prime = () => {
   const primeArticles = [
     {
       image: bubbles,
-      article_url: "https://example.com",
+      article_url: "https://youtube.com",
       article_text: "Prime Article",
       author_first: "Prime",
       author_last: "Author",

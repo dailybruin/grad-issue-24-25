@@ -98,12 +98,13 @@ const ArticleCard = ({
   // this is similar to what we had before, just more dynamic now
   const cardStyle = {
     backgroundColor: "black",
-    width: `${dimensions.width}px`,
+    width: !isLarge ? `${dimensions.width}px` : `${dimensions.width + 8}px`,  // More width for PRIME article, fills in side whitespace
     height: `${dimensions.height}px`,
     color: "white",
     display: "flex",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    marginRight: isLarge && '6px',  // For large cards, shift left a bit, for some reason it's uncentered
   };
 
   const innerStyle = {
@@ -114,7 +115,7 @@ const ArticleCard = ({
     position: "relative",
     cursor: "pointer",
   };
-
+  
   const imageStyle = {
     width: "100%",
     height: "100%",

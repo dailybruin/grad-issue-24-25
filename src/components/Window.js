@@ -51,7 +51,7 @@ const Window = ({
     maxWidth: "100%",
     height: "auto",
     position: "relative",
-    zIndex: 2,  // Window should be above cards
+    zIndex: !isLarge ? 3 : 1,  // Window should be above cards, except PRIME (color spills into frame)
     pointerEvents: "none"  // Allows pointer events to go through the window (which is on top of the cards)
   };
 
@@ -65,7 +65,7 @@ const Window = ({
     flexDirection: "column",
     alignItems: "center",
     padding: isMobile ? "0 10px" : "0",
-    zIndex: 1,  // Cards are below window
+    zIndex: 2,  // Cards are below window
   };
 
   const flexOverlayRow = {
