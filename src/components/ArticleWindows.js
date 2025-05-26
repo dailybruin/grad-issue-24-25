@@ -9,783 +9,180 @@ import primeBack from "../images/prime.png";
 import thirtyBack from "../images/30.png";
 import bubbles from "../images/bubbles.png";
 
-const News = () => {
-  const newsArticles = [
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 1",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 2",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 3",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 4",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 5",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 6",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 7",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 8",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 9",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 10",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 11",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 12",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 13",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 14",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 15",
-      author_first: "John",
-      author_last: "Doe",
-    },
-  ];
+const News = ({ articles }) => {
+  // 15 news articles
+
+  // temporarily hard coding to match 15 articles sizes for TESTING purposes
+  const temp15articles = [...articles];
+  
+  while (temp15articles.length < 15) {
+    temp15articles.push(...articles); 
+  }
+  const temp15articles2 = temp15articles.slice(0, 15);
 
   return (
     <Window
       backgroundImage={newsBack}
       windowTitle="NEWS"
-      articles={newsArticles}
+      articles={temp15articles2} // FIXME: later fix this
       shrinksAt={1051}
     />
   );
 };
 
-const Sports = () => {
-  const sportsArticles = [
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 1",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 2",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 3",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 4",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 5",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 6",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 7",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 8",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 9",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 10",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 11",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 12",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 13",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 14",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    { isPlaceholder: true, placeholderColor: "#83AD83" },
+const Sports = ({ articles }) => {
+  // 14 news articles
+  const insertIndex = 14;
+
+  // FIXME: later fix this
+  // temporarily hard coding to match 14 articles sizes for TESTING purposes
+  const temp15articles = [...articles];
+  
+  while (temp15articles.length < 14) {
+    temp15articles.push(...articles); 
+  }
+  const temp15articles2 = temp15articles.slice(0, 14);
+
+  const updatedArticles = [
+    ...temp15articles2.slice(0, insertIndex),
+    { isPlaceholder: true, placeholderColor: "#83AD83" }
   ];
 
   return (
     <Window
       backgroundImage={sportsBack}
       windowTitle="SPORTS"
-      articles={sportsArticles}
+      articles={updatedArticles}
       shrinksAt={1053}
     />
   );
 };
 
-const Arts = () => {
-  const artsArticles = [
+const Arts = ( { articles }) => {
+  // ten art articles
+  articles = articles.slice(0, 9);
+  const insertIndex = [0, 5, 11];
+
+  const updatedArticles = [
     { isPlaceholder: true, placeholderColor: "#C69394" },
-
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 2",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 3",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 4",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    { isPlaceholder: true, placeholderColor: "#83AD83" },
-
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 6",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 7",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 8",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 9",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 10",
-      author_first: "John",
-      author_last: "Doe",
-    },
+    ...articles.slice(0, insertIndex[1]),
+    { isPlaceholder: true, placeholderColor: "#83AD83" }, 
+    ...articles.slice(insertIndex[1], insertIndex[2]),
     { isPlaceholder: true, placeholderColor: "#D0CD84" },
-
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 12",
-      author_first: "John",
-      author_last: "Doe",
-    },
+    ...articles.slice(insertIndex[2])
   ];
 
   return (
     <Window
       backgroundImage={artsBack}
       windowTitle="ARTS"
-      articles={artsArticles}
+      articles={updatedArticles}
       incCardHeightBy={1}
     />
   );
 };
 
-const Opinion = () => {
-  const opinionArticles = [
-    {
-      image: bubbles,
-      article_url: "https://example.com",
-      article_text: "Quad Article 1",
-      author_first: "Jane",
-      author_last: "Doe",
-    },
-    { isPlaceholder: true, placeholderColor: "#D0CD84" },
+const Opinion = ( { articles }) => {
+  // three opinion articles 
+  articles = articles.slice(0, 3);
+  const insertIndex = [1, 2, 4];
 
-    {
-      image: bubbles,
-      article_url: "https://example.com",
-      article_text: "Quad Article 2",
-      author_first: "Jane",
-      author_last: "Doe",
-    },
+  const updatedArticles = [
+    ...articles.slice(0, insertIndex[0]),
+    { isPlaceholder: true, placeholderColor: "#D0CD84" }, 
+    ...articles.slice(insertIndex[0], insertIndex[1]),
     { isPlaceholder: true, placeholderColor: "#83AD83" },
-
-    {
-      image: bubbles,
-      article_url: "https://example.com",
-      article_text: "Opinion Article 4",
-      author_first: "Jane",
-      author_last: "Doe",
-    },
+    ...articles.slice(insertIndex[1], insertIndex[2]),
     { isPlaceholder: true, placeholderColor: "#82A8C7" },
+    ...articles.slice(insertIndex[2])
   ];
 
   return (
     <Window
       backgroundImage={opinionBack}
       windowTitle="OPINION"
-      articles={opinionArticles}
+      articles={updatedArticles}
       incCardHeightBy={4}
       shrinksAt={1051}
     />
   );
 };
 
-const TheQuad = () => {
-  const quadArticles = [
+const TheQuad = ({ articles }) => {
+  // three quad articles 
+  articles = articles.slice(0, 3);
+  const insertIndex = [0, 1, 2];
+
+  const updatedArticles = [
     { isPlaceholder: true, placeholderColor: "#D0CD84" },
-    {
-      image: bubbles,
-      article_url: "https://example.com",
-      article_text: "Quad Article 2",
-      author_first: "Jane",
-      author_last: "Doe",
-    },
-
-    { isPlaceholder: true, placeholderColor: "#83AD83" },
-
-    {
-      image: bubbles,
-      article_url: "https://example.com",
-      article_text: "Quad Article 4",
-      author_first: "Jane",
-      author_last: "Doe",
-    },
+    ...articles.slice(0, insertIndex[1]),
+    { isPlaceholder: true, placeholderColor: "#83AD83" }, 
+    ...articles.slice(insertIndex[1], insertIndex[2]),
     { isPlaceholder: true, placeholderColor: "#C69394" },
-
-    {
-      image: bubbles,
-      article_url: "https://example.com",
-      article_text: "NULL",
-      author_first: "Jane",
-      author_last: "Doe",
-    },
+    ...articles.slice(insertIndex[2])
   ];
 
   return (
     <Window
       backgroundImage={quadBack}
       windowTitle="THE QUAD"
-      articles={quadArticles}
+      articles={updatedArticles}
       incCardHeightBy={5}
     />
   );
 };
 
-const Multimedia = () => {
-  const multimediaArticles = [
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 1",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 2",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 3",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 4",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 5",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 6",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 7",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 8",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 9",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 10",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 11",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 12",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 13",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 14",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 15",
-      author_first: "John",
-      author_last: "Doe",
-    },
-  ];
+const Multimedia = ({ articles }) => {
+  // 15 multimedia articles 
+
+  // temporarily hard coding to match 15 articles sizes for TESTING purposes
+  const temp15articles = [...articles];
+  
+  while (temp15articles.length < 15) {
+    temp15articles.push(...articles); 
+  }
+  const temp15articles2 = temp15articles.slice(0, 15);
 
   return (
     <Window
       backgroundImage={multimediaBack}
       windowTitle="MULTIMEDIA"
-      articles={multimediaArticles}
+      articles={temp15articles2} // FIXME: later fix this
     />
   );
 };
 
-const Prime = () => {
-  const primeArticles = [
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Prime Article",
-      author_first: "Prime",
-      author_last: "Author",
-    },
-  ];
+const Prime = ({ articles }) => {
+  // only one prime article
+  articles = articles.slice(0, 1);
 
   return (
     <Window
       backgroundImage={primeBack}
       windowTitle="PRIME"
-      articles={primeArticles}
+      articles={articles}
       isLarge={true}
     />
   );
 };
 
 // this is not formatting well
-const Thirty = () => {
-  const thirtyArticles = [
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 1",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 2",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 3",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 4",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 5",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 6",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 7",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 8",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 9",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 10",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 11",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 12",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 13",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 14",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 15",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 16",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 17",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 18",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 19",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 20",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 21",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 22",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 23",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 24",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 25",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 26",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 27",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 28",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 29",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 30",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 31",
-      author_first: "John",
-      author_last: "Doe",
-    },
-    {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 32",
-      author_first: "John",
-      author_last: "Doe",
-    },
-        {
-      image: bubbles,
-      article_url: "https://youtube.com",
-      article_text: "Article 33",
-      author_first: "John",
-      author_last: "Doe",
-    },
-  ];
+const Thirty = ({ articles }) => {
+  // 30 thirty articles 
+
+  // temporarily hard coding to match 30 articles sizes for TESTING purposes
+  const temp15articles = [...articles];
+  
+  while (temp15articles.length < 30) {
+    temp15articles.push(...articles); 
+  }
+  const temp15articles2 = temp15articles.slice(0, 30);
 
   return (
     <Window
       backgroundImage={thirtyBack}
       windowTitle="THIRTY"
-      articles={thirtyArticles}
+      articles={temp15articles2} // FIXME: later fix this
       is30={true}
       shrinksAt={1064}
     />

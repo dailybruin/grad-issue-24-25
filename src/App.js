@@ -35,14 +35,14 @@ function App() {
         }}
       >
         <Header />
-        <News />
-        <Sports />
-        <Arts />
-        <Opinion />
-        <TheQuad />
-        <Multimedia />
-        <Prime />
-        <Thirty />
+        <News articles={data.articles}/>
+        <Sports articles={data.articles}/>
+        <Arts articles={data.articles}/>
+        <Opinion articles={data.articles}/>
+        <TheQuad articles={data.articles}/>
+        <Multimedia articles={data.articles}/>
+        <Prime articles={data.articles}/>
+        <Thirty articles={data.articles}/>
         <Footer />
       </div>
     )

@@ -1,5 +1,6 @@
 import ArticleCard from "./ArticleCard";
 import { useState, useEffect } from "react";
+import bubbles from "../images/bubbles.png";
 import {
   CARD_BACK_HEIGHT,
   CARD_BACK_WIDTH,
@@ -125,11 +126,10 @@ const Window = ({
                   {row.map((article, cardIndex) => (
                     <ArticleCard
                       key={`${rowIndex}-${cardIndex}`}
-                      image={article.image}
+                      image={bubbles}
                       article_url={article.article_url}
-                      article_text={article.article_text}
-                      author_first={article.author_first}
-                      author_last={article.author_last}
+                      article_title={article.article_title}
+                      author_byline={article.article_byline}
                       isLarge={isLarge && !isMobile}
                       isMobile={isMobile}
                       isPlaceholder={article.isPlaceholder}

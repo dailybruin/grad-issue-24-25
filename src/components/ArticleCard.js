@@ -7,11 +7,10 @@ import {
 } from "./constants.js";
 
 const ArticleCard = ({
-  image,
+  image, // hard coded bubbles image based on figma
   article_url,
-  article_text,
-  author_first,
-  author_last,
+  article_title, // should be getting article title
+  author_byline,
   isLarge = false,
   isMobile = false,
   isPlaceholder = false,
@@ -92,12 +91,12 @@ const ArticleCard = ({
   const TEXT_CHAR_LIMIT = isMobile ? 100 : isLarge ? 150 : 82;
 
   // Log of the hover text is over TEXT_CHAR_LIMIT characters
-  if (!isPlaceholder && article_text && article_text.length > TEXT_CHAR_LIMIT) {
+  if (!isPlaceholder && article_title && article_title.length > TEXT_CHAR_LIMIT) {
     console.error(
       "Over " +
         TEXT_CHAR_LIMIT +
         " char article text: length is " +
-        article_text.length
+        article_title.length
     );
   }
 
@@ -183,16 +182,16 @@ const ArticleCard = ({
           rel="noopener noreferrer"
           style={{ textDecoration: "none" }}
         >
-          <img src={image} style={imageStyle} alt={article_text} />
+          <img src={image} style={imageStyle} alt={article_title} />
 
           {/* desktop hover */}
           {!isMobile && !isPlaceholder && (
             <div style={textOverlayStyle}>
-              {article_text}
+              {article_title}
               <br />
               <br />
               <div style={authorStyle}>
-                By {author_first} {author_last}
+                By {author_byline}
               </div>
             </div>
           )}
@@ -200,9 +199,9 @@ const ArticleCard = ({
           {/* no hover on mobile (change?) */}
           {isMobile && !isPlaceholder && (
             <div style={mobileTextStyle}>
-              <div>{article_text}</div>
+              <div>{article_title}</div>
               <div style={mobileAuthorStyle}>
-                By {author_first} {author_last}
+                By {author_byline}
               </div>
             </div>
           )}
