@@ -43,13 +43,17 @@ const Window = ({
     margin: isMobile ? "30px auto" : "50px auto",
   };
 
+  // The window itself
   const imageStyle = {
     display: "block",
     width: "auto",
     maxWidth: "100%",
     height: "auto",
+    position: "relative",
+    zIndex: 2,  // Window should be above cards
   };
 
+  // The article cards (all windows)
   const overlayContainer = {
     position: "absolute",
     top: `${scaledTopOffset}px`,
@@ -59,6 +63,7 @@ const Window = ({
     flexDirection: "column",
     alignItems: "center",
     padding: isMobile ? "0 10px" : "0",
+    zIndex: 1,  // Cards are below window
   };
 
   const flexOverlayRow = {
