@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "../fonts/fonts.css";
+import { CARD_BACK_WIDTH, WINDOW_WIDTH } from "./constants.js";
 
 const ArticleCard = ({
   image,
@@ -15,10 +16,6 @@ const ArticleCard = ({
 }) => {
   const [isHovered, setIsHovered] = useState(false);
 
-  // Constants
-  const outerWidth = 310  // Black background for each card
-  const WINDOW_WIDTH = 1052;  // Width of window (breakpoint to start scaling card)
-
   if (isPlaceholder) {
     const baseInner = 260;
     const scale = Math.min(windowWidth / WINDOW_WIDTH, 1);
@@ -27,8 +24,8 @@ const ArticleCard = ({
       <div
         style={{
           backgroundColor: "black",
-          width: `${outerWidth * scale}px`,
-          height: `${outerWidth * scale}px`,
+          width: `${CARD_BACK_WIDTH * scale}px`,
+          height: `${CARD_BACK_WIDTH * scale}px`,
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -74,8 +71,8 @@ const ArticleCard = ({
     } else {
       const scale = Math.min(windowWidth / WINDOW_WIDTH, 1); // this scaling is to reduce the SIZE of the article cards as the window decreases
       return {
-        width: outerWidth * scale,
-        height: outerWidth * scale,
+        width: CARD_BACK_WIDTH * scale,
+        height: CARD_BACK_WIDTH * scale,
         innerWidth: 260 * scale,
         innerHeight: 260 * scale,
         fontSize: 27 * scale,
@@ -87,7 +84,7 @@ const ArticleCard = ({
   const dimensions = getCardDimensions();
   const TEXT_CHAR_LIMIT = isMobile ? 100 : isLarge ? 150 : 82;
 
-  // Log of the hover text is over 82 characters
+  // Log of the hover text is over TEXT_CHAR_LIMIT characters
   if (!isPlaceholder && article_text && article_text.length > TEXT_CHAR_LIMIT) {
     console.error(
       "Over " +
@@ -105,7 +102,7 @@ const ArticleCard = ({
     color: "white",
     display: "flex",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "center"
   };
 
   const innerStyle = {

@@ -1,5 +1,6 @@
 import ArticleCard from "./ArticleCard";
 import { useState, useEffect } from "react";
+import { WINDOW_WIDTH } from "./constants.js";
 
 const Window = ({
   backgroundImage,
@@ -31,7 +32,7 @@ const Window = ({
   }, []);
 
   // calculate how much we should scale it by depending on what our window width is
-  const scale = Math.min(windowWidth / 1070, 1);
+  const scale = Math.min(windowWidth / WINDOW_WIDTH, 1);
   const scaledTopOffset = topOffset * scale;
 
   // this is what we had before, except everything is more dynamic now
