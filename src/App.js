@@ -12,6 +12,8 @@ import {
   Prime,
   Thirty,
 } from "./components/ArticleWindows";
+import Bricks from "./images/background-bricks.png";
+
 
 function App() {
   const [data, setData] = useState(null);
@@ -26,7 +28,12 @@ function App() {
 
   return (
     data && (
-      <div className="App">
+      <div
+        className="App"
+        style={{
+          backgroundImage: `url(${Bricks})`,
+        }}
+      >
         <Header />
         <News />
         <Sports />
