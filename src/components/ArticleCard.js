@@ -15,17 +15,20 @@ const ArticleCard = ({
 }) => {
   const [isHovered, setIsHovered] = useState(false);
 
+  // Constants
+  const outerWidth = 310  // Black background for each card
+  const WINDOW_WIDTH = 1052;  // Width of window (breakpoint to start scaling card)
+
   if (isPlaceholder) {
-    const baseOuter = 305;
     const baseInner = 260;
-    const scale = Math.min(windowWidth / 1070, 1);
+    const scale = Math.min(windowWidth / WINDOW_WIDTH, 1);
 
     return (
       <div
         style={{
           backgroundColor: "black",
-          width: `${baseOuter * scale}px`,
-          height: `${310 * scale}px`,
+          width: `${outerWidth * scale}px`,
+          height: `${outerWidth * scale}px`,
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -58,7 +61,7 @@ const ArticleCard = ({
       };
       // wrote this for prime
     } else if (isLarge) {
-      const scale = Math.min(windowWidth / 1070, 1); // same base as others
+      const scale = Math.min(windowWidth / WINDOW_WIDTH, 1); // same base as others
       return {
         width: 900 * scale,
         height: 900 * scale,
@@ -69,11 +72,10 @@ const ArticleCard = ({
       };
       // "regular" card on a laptop
     } else {
-      const baseWidth = 305;
-      const scale = Math.min(windowWidth / 1070, 1); // this scaling is to reduce the SIZE of the article cards as the window decreases
+      const scale = Math.min(windowWidth / WINDOW_WIDTH, 1); // this scaling is to reduce the SIZE of the article cards as the window decreases
       return {
-        width: baseWidth * scale,
-        height: 310 * scale,
+        width: outerWidth * scale,
+        height: outerWidth * scale,
         innerWidth: 260 * scale,
         innerHeight: 260 * scale,
         fontSize: 27 * scale,
@@ -85,7 +87,7 @@ const ArticleCard = ({
   const dimensions = getCardDimensions();
   const TEXT_CHAR_LIMIT = isMobile ? 100 : isLarge ? 150 : 82;
 
-  // lowk not sure what this is for but it was in the code before so I'll keep it (added extra checking because of uncaught expceptions)
+  // Log of the hover text is over 82 characters
   if (!isPlaceholder && article_text && article_text.length > TEXT_CHAR_LIMIT) {
     console.error(
       "Over " +
