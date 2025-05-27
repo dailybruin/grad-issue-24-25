@@ -12,22 +12,21 @@ const Container = styled("div")`
   background-color: #EBD9B6;
   border: 5px solid #EBD9B6;
   padding: 5px 0;
-  padding-top: 20px;
+  padding-top: 24px;
   white-space: nowrap; 
 `;
 
 const Section = styled("a")`
-  padding: 0.8em 1.5em;
-  margin: 0 0.5px;
-  margin-top: 10px;
+  padding: 0.5em 1.5em;
+  margin: 1px 1px;
   color: #826324;
   text-decoration: none;
   align-content: center;
   background-color: #F1E7D3;
-  border: 5px solid #EBD9B6;
+  border: 1px solid #EBD9B6;
   transition: background-color 0.3s ease, color 0.3s ease;
   font-family: Josefin Sans;
-  font-weight: 700;
+  font-weight: 400;
   font-size: 17px;
   line-height: 100%;
   letter-spacing: 0%;
@@ -47,17 +46,17 @@ const Section = styled("a")`
   }
 
   &:hover {
-    // background-color: #F1E7D3; /* Light background on hover */
-    background-color: #EBD9B6;
-    border: 5px solid #826324;
-    color: #000; /* Dark text on hover */
+    background-color: #F1E7D3; /* Light background on hover */
+    border: 2px solid #826324;
+    color: black; /* Dark text on hover */
+    margin: 0px 0px;
   }
 `;
 
 const Nav = () => {
   const sections = [
     "TITLE", "LETTER", "INTERACTIVE", "NEWS", "SPORTS", "ARTS", 
-    "OPINION", "QUAD", "MULTIMEDIA", "PRIME", "ABOUT"
+    "OPINION", "QUAD", "MULTIMEDIA", "PRIME", "-30-", "ABOUT"
   ];
 
   const handleScroll = (sectionId) => {

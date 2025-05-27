@@ -187,7 +187,7 @@ const Thirty = ({ articles }) => {
 
   return (
     <Window
-      id="thirty"
+      id="-30-"
       backgroundImage={thirtyBack}
       windowTitle="THIRTY"
       articles={temp15articles2} // FIXME: later fix this
