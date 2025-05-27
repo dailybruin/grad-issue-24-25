@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import DBLogo from '../images/DailyBruinLogo.svg'
+import {ReactComponent as DBLogo} from '../images/DailyBruinLogo.svg'
 
 const DBHeader = styled("div")`
   z-index: 2001;
@@ -21,12 +21,16 @@ const DBHeader = styled("div")`
   color: #826324;
 `;
 
+const StyledLogo = styled(DBLogo)`
+  fill: #826324;
+`;
+
 const Header = () => {
   return (
     <DBHeader>
       {/* Daily Bruin */}
       <a href="https://dailybruin.com">
-        <img src={DBLogo} alt="Daily Bruin" />
+        <StyledLogo />
       </a>
     </DBHeader>
   )
