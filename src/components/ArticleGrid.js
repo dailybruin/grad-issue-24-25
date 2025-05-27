@@ -1,6 +1,6 @@
-import ArticleCard from './ArticleCard.js'
 import styled from 'styled-components'
 import backgroundImage from '../images/background-bricks.png'
+import { Arts, Multimedia, News, Opinion, Prime, Sports, TheQuad, Thirty } from './ArticleWindows.js';
 
 
 const GridContainer = styled.div`
@@ -34,16 +34,24 @@ const Articles = styled.div`
     }
 `;
 
-const DesktopArticleGrid = ({ articles }) => {
+const ArticleGrid = ({ props }) => {
     return (
         <GridContainer>
-            <Articles>
+            {/* <Articles>
             {articles.map((article) => {
                 return <ArticleCard props={article} />;
              })}
-            </Articles>
+            </Articles> */}
+            <News articles={props.articles}/>
+            <Sports articles={props.articles}/>
+            <Arts articles={props.articles}/>
+            <Opinion articles={props.articles}/>
+            <TheQuad articles={props.articles}/>
+            <Multimedia articles={props.articles}/>
+            <Prime articles={props.articles}/>
+            <Thirty articles={props.articles}/>
         </GridContainer>
     )
   }
 
-export default DesktopArticleGrid;
+export default ArticleGrid;

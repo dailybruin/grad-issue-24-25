@@ -8,6 +8,7 @@ import {
 } from "./constants.js";
 
 const Window = ({
+  id, 
   backgroundImage,
   windowTitle = "MULTIMEDIA",
   articles = [],
@@ -105,7 +106,7 @@ const Window = ({
     rows.push(articles.slice(i, i + finalArticlesPerRow));
   }
   return (
-    <div style={{ marginBottom: "160px" }}>
+    <div id={id} style={{ marginBottom: "160px" }}>
       {" "}
       <div style={containerStyle}>
         <div style={{ position: "relative", width: "fit-content" }}>

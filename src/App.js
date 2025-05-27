@@ -13,6 +13,9 @@ import {
   Thirty,
 } from "./components/ArticleWindows";
 import Bricks from "./images/background-bricks.png";
+import ArticleGrid from "./components/ArticleGrid";
+import Landing from "./components/Landing";
+import Nav from "./components/Nav";
 
 
 function App() {
@@ -30,19 +33,22 @@ function App() {
     data && (
       <div
         className="App"
-        style={{
-          backgroundImage: `url(${Bricks})`,
-        }}
+        // style={{
+        //   backgroundImage: `url(${Bricks})`,
+        // }}
       >
+        <Nav/>
         <Header />
-        <News articles={data.articles}/>
+        {/* <News articles={data.articles}/>
         <Sports articles={data.articles}/>
         <Arts articles={data.articles}/>
         <Opinion articles={data.articles}/>
         <TheQuad articles={data.articles}/>
         <Multimedia articles={data.articles}/>
         <Prime articles={data.articles}/>
-        <Thirty articles={data.articles}/>
+        <Thirty articles={data.articles}/> */}
+        <Landing/>
+        <ArticleGrid props={data}/>
         <Footer />
       </div>
     )

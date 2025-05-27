@@ -1,0 +1,92 @@
+import React from "react";
+import styled from "styled-components";
+
+const Container = styled("div")`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+  position: fixed;
+  z-index: 1000;
+  align-content: center;
+  background-color: #EBD9B6;
+  border: 5px solid #EBD9B6;
+  padding: 5px 0;
+  padding-top: 20px;
+  white-space: nowrap; 
+`;
+
+const Section = styled("a")`
+  padding: 0.8em 1.5em;
+  margin: 0 0.5px;
+  margin-top: 10px;
+  color: #826324;
+  text-decoration: none;
+  align-content: center;
+  background-color: #F1E7D3;
+  border: 5px solid #EBD9B6;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: Josefin Sans;
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+
+  @media (max-width: 1200px) {
+    font-size: 13px;
+  }
+
+  @media (max-width: 900px) {
+    margin-top: 5px;
+    font-size: 9px;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 8px;
+  }
+
+  &:hover {
+    // background-color: #F1E7D3; /* Light background on hover */
+    background-color: #EBD9B6;
+    border: 5px solid #826324;
+    color: #000; /* Dark text on hover */
+  }
+`;
+
+const Nav = () => {
+  const sections = [
+    "TITLE", "LETTER", "INTERACTIVE", "NEWS", "SPORTS", "ARTS", 
+    "OPINION", "QUAD", "MULTIMEDIA", "PRIME", "ABOUT"
+  ];
+
+  const handleScroll = (sectionId) => {
+    const sectionElement = document.getElementById(sectionId);
+    if (sectionElement) {
+      sectionElement.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  return (
+    <Container>
+      {sections.map((section, index) => {
+        const sectionId = section.toLowerCase().replace(/\s+/g, ""); // Generate ID by removing spaces
+
+        return (
+          <Section
+            key={index}
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              handleScroll(sectionId);
+            }}
+          >
+            {section}
+          </Section>
+        );
+      })}
+    </Container>
+  );
+};
+
+export default Nav;

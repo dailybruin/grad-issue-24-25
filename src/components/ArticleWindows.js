@@ -22,6 +22,7 @@ const News = ({ articles }) => {
 
   return (
     <Window
+      id="news"
       backgroundImage={newsBack}
       windowTitle="NEWS"
       articles={temp15articles2} // FIXME: later fix this
@@ -50,6 +51,7 @@ const Sports = ({ articles }) => {
 
   return (
     <Window
+      id="sports"
       backgroundImage={sportsBack}
       windowTitle="SPORTS"
       articles={updatedArticles}
@@ -74,6 +76,7 @@ const Arts = ( { articles }) => {
 
   return (
     <Window
+      id="arts"
       backgroundImage={artsBack}
       windowTitle="ARTS"
       articles={updatedArticles}
@@ -99,6 +102,7 @@ const Opinion = ( { articles }) => {
 
   return (
     <Window
+      id="opinion"
       backgroundImage={opinionBack}
       windowTitle="OPINION"
       articles={updatedArticles}
@@ -124,6 +128,7 @@ const TheQuad = ({ articles }) => {
 
   return (
     <Window
+      id="quad"
       backgroundImage={quadBack}
       windowTitle="THE QUAD"
       articles={updatedArticles}
@@ -145,6 +150,7 @@ const Multimedia = ({ articles }) => {
 
   return (
     <Window
+      id="multimedia"
       backgroundImage={multimediaBack}
       windowTitle="MULTIMEDIA"
       articles={temp15articles2} // FIXME: later fix this
@@ -158,6 +164,7 @@ const Prime = ({ articles }) => {
 
   return (
     <Window
+      id="prime"
       backgroundImage={primeBack}
       windowTitle="PRIME"
       articles={articles}
@@ -180,6 +187,7 @@ const Thirty = ({ articles }) => {
 
   return (
     <Window
+      id="thirty"
       backgroundImage={thirtyBack}
       windowTitle="THIRTY"
       articles={temp15articles2} // FIXME: later fix this
