@@ -177,13 +177,13 @@ const Prime = ({ articles }) => {
 const Thirty = ({ articles }) => {
   // 30 thirty articles 
 
-  // temporarily hard coding to match 30 articles sizes for TESTING purposes
+  // temporarily hard coding to match 33 articles sizes for TESTING purposes
   const temp15articles = [...articles];
   
-  while (temp15articles.length < 30) {
+  while (temp15articles.length < 33) {
     temp15articles.push(...articles); 
   }
-  const temp15articles2 = temp15articles.slice(0, 30);
+  const temp15articles2 = temp15articles.slice(0, 33);
 
   return (
     <Window

@@ -90,6 +90,8 @@ const ArticleCard = ({
   const dimensions = getCardDimensions();
   const TEXT_CHAR_LIMIT = isMobile ? 100 : isLarge ? 150 : 82;
 
+  // Commenting this out for now, it's cluttering the console
+  /*
   // Log of the hover text is over TEXT_CHAR_LIMIT characters
   if (!isPlaceholder && article_title && article_title.length > TEXT_CHAR_LIMIT) {
     console.error(
@@ -99,6 +101,7 @@ const ArticleCard = ({
         article_title.length
     );
   }
+    */
 
   // this is similar to what we had before, just more dynamic now
   const cardStyle = {
