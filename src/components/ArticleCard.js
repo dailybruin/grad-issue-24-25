@@ -147,17 +147,17 @@ const ArticleCard = ({
     bottom: "0",
     left: "0",
     right: "0",
-    background: "linear-gradient(transparent, rgba(0,0,0,0.8))",
+    background: "linear-gradient(transparent, rgba(0,0,0,0.65))",
     color: "white",
-    padding: "20px 15px 15px",
+    padding: "20px 3px 5px",
     textAlign: "center",
     fontFamily: "Joan, serif",
-    fontSize: "18px",
+    fontSize: "11px",
   };
 
   const mobileAuthorStyle = {
-    fontSize: "14px",
-    marginTop: "8px",
+    fontSize: "10px",
+    marginTop: "6px",
   };
 
   return (
