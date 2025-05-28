@@ -117,40 +117,25 @@ const Window = ({
           />
           <div style={overlayContainer}>
             {rows.map((row, rowIndex) => (
-              <>
-                {/* Add a space after 5 rows only for 30 window */}
-                {is30 && rowIndex == 5 && (
-                  <div style={{ height: thirtyMidPaneHeight }} /> // Height of middle pane for 30
-                )}
-
-                <div key={rowIndex} style={flexOverlayRow}>
-                  {row.map((article, cardIndex) => (
-                    <ArticleCard
-                      key={`${rowIndex}-${cardIndex}`}
-                      image={bubbles}
-                      article_url={article.article_url}
-                      article_title={article.article_title}
-                      author_byline={article.article_byline}
-                      isLarge={isLarge && !isMobile}
-                      isMobile={isMobile}
-                      isPlaceholder={article.isPlaceholder}
-                      placeholderColor={article.placeholderColor}
-                      windowWidth={windowWidth}
-                      cardWidth={!is30 ? CARD_BACK_WIDTH : CARD_BACK_WIDTH + 5} // To fill in whitespace in 30 window
-                      cardHeight={
-                        !is30
-                          ? CARD_BACK_HEIGHT + incCardHeightBy
-                          : // Reason for this below - bottom half of 30 window is smaller than top half
-                          rowIndex <= 4 // Top half of 30 window: don't change card height
-                          ? CARD_BACK_HEIGHT
-                          : // Bottom half of 30 window: smudge cards together more vertically
-                            CARD_BACK_HEIGHT - 7
-                      }
-                      shrinksAt={shrinksAt}
-                    />
-                  ))}
-                </div>
-              </>
+              <div key={rowIndex} style={flexOverlayRow}>
+                {row.map((article, cardIndex) => (
+                  <ArticleCard
+                    key={`${rowIndex}-${cardIndex}`}
+                    image={bubbles}
+                    article_url={article.article_url}
+                    article_title={article.article_title}
+                    author_byline={article.article_byline}
+                    isLarge={isLarge && !isMobile}
+                    isMobile={isMobile}
+                    isPlaceholder={article.isPlaceholder}
+                    placeholderColor={article.placeholderColor}
+                    windowWidth={windowWidth}
+                    cardWidth={CARD_BACK_WIDTH}
+                    cardHeight={CARD_BACK_HEIGHT + incCardHeightBy}
+                    shrinksAt={shrinksAt}
+                  />
+                ))}
+              </div>
             ))}
           </div>
         </div>
