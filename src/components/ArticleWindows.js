@@ -238,7 +238,6 @@ const Thirty = ({ articles }) => {
       windowTitle="THIRTY"
       articles={temp15articles2} // FIXME: later fix this
       articlesMobile={updatedArticlesMobile}  // FIXME: later fix this
-      is30={true}
       shrinksAt={1064}
       incCardHeightBy={3}
     />

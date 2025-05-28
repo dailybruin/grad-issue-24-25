@@ -15,12 +15,12 @@ const Window = ({
   articles = [],
   articlesMobile = [],
   articlesPerRow = null,
-  topOffset = 350,
   incCardHeightBy = 0, // Used to fill out inside the window by barely changing card height
   isLarge = false,
-  is30 = false,
   shrinksAt = WINDOW_WIDTH,
 }) => {
+  const topOffset = 350;
+
   const [isMobile, setIsMobile] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
@@ -48,12 +48,6 @@ const Window = ({
     ? Math.min(windowWidth / shrinksAt, 1)
     : Math.min(windowWidth / (shrinksAt + 30), 1);
   const scaledTopOffset = topOffset * scale;
-
-  const midScale = isMac
-    ? Math.min(windowWidth / shrinksAt, 1)
-    : Math.min(windowWidth / (shrinksAt + 400), 1);
-
-  const thirtyMidPaneHeight = 75 * midScale;
 
   // this is what we had before, except everything is more dynamic now
   const containerStyle = {
@@ -83,7 +77,7 @@ const Window = ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    padding: isMobile ? "0 10px" : "0",
+    padding: "0",
     zIndex: 2, // Cards are below window
   };
 

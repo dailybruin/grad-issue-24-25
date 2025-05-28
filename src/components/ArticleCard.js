@@ -22,7 +22,7 @@ const ArticleCard = ({
 }) => {
   const [isHovered, setIsHovered] = useState(false);
   if (isPlaceholder) {
-    const baseInner = 260;
+    const baseInner = cardWidth - 50;
     const scale = Math.min(windowWidth / shrinksAt, 1);
 
     return (
