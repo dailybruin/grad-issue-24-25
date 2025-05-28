@@ -10,8 +10,10 @@ import {
 const Window = ({
   id, 
   backgroundImage,
+  backgroundImageMobile,
   windowTitle = "MULTIMEDIA",
   articles = [],
+  articlesMobile = [],
   articlesPerRow = null,
   topOffset = 350,
   incCardHeightBy = 0, // Used to fill out inside the window by barely changing card height
@@ -102,8 +104,9 @@ const Window = ({
 
   // arrange all the articles into the rows
   const rows = [];
-  for (let i = 0; i < articles.length; i += finalArticlesPerRow) {
-    rows.push(articles.slice(i, i + finalArticlesPerRow));
+  const targetArticles = isMobile ? articlesMobile : articles;
+  for (let i = 0; i < targetArticles.length; i += finalArticlesPerRow) {
+    rows.push(targetArticles.slice(i, i + finalArticlesPerRow));
   }
   return (
     <div id={id} style={{ marginBottom: "160px" }}>
@@ -111,7 +114,7 @@ const Window = ({
       <div style={containerStyle}>
         <div style={{ position: "relative", width: "fit-content" }}>
           <img
-            src={backgroundImage}
+            src={isMobile ? backgroundImageMobile : backgroundImage}
             alt={`${windowTitle} Window`}
             style={imageStyle}
           />

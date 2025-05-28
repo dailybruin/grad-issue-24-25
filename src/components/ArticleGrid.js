@@ -1,19 +1,21 @@
 import styled from 'styled-components'
-import backgroundImage from '../images/background-bricks.png'
+import { useEffect, useState } from 'react';
+import desktopBackground from '../images/desktop/bricks.png'
+import mobileBackground from '../images/mobile/bricksMobile.png'
 import { Arts, Multimedia, News, Opinion, Prime, Sports, TheQuad, Thirty } from './ArticleWindows.js';
 
 
 const GridContainer = styled.div`
-	height: auto;
-	color: #F0E8CE;
-    text-align: center;
-    padding-top: 20%;
-    position: relative;
-    background-image: url(${backgroundImage});
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center; 
-`; 
+  height: 100%;
+  color: #F0E8CE;
+  text-align: center;
+  padding-top: 20%;
+  position: relative;
+  background-image: url(${props => props.$isMobile ? mobileBackground : desktopBackground});
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+`;
 
 const Articles = styled.div`
     display: grid;
@@ -35,8 +37,25 @@ const Articles = styled.div`
 `;
 
 const ArticleGrid = ({ props }) => {
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(
+            /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+                navigator.userAgent
+            )
+            );
+        };
+
+        handleResize();
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
+
     return (
-        <GridContainer>
+        <GridContainer $isMobile={isMobile}>
             {/* <Articles>
             {articles.map((article) => {
                 return <ArticleCard props={article} />;

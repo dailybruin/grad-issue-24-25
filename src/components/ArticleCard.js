@@ -21,7 +21,6 @@ const ArticleCard = ({
   shrinksAt = WINDOW_WIDTH,
 }) => {
   const [isHovered, setIsHovered] = useState(false);
-
   if (isPlaceholder) {
     const baseInner = 260;
     const scale = Math.min(windowWidth / shrinksAt, 1);
@@ -51,25 +50,14 @@ const ArticleCard = ({
 
   // sizing based on screen size
   const getCardDimensions = () => {
-    if (isMobile) {
-      // attempt on mobile...
-      const mobileWidth = Math.min(window.innerWidth - 40, 350);
-      return {
-        width: mobileWidth,
-        height: mobileWidth,
-        innerWidth: mobileWidth - 40,
-        innerHeight: mobileWidth - 40,
-        fontSize: 22,
-        authorSize: 16,
-      };
-      // wrote this for prime
-    } else if (isLarge) {
+      // for Prime article card ("large" card)
+    if (isLarge) {
       const scale = Math.min(windowWidth / shrinksAt, 1); // same base as others
       return {
-        width: 900 * scale,
-        height: 900 * scale,
-        innerWidth: 850 * scale,
-        innerHeight: 850 * scale,
+        width: (cardWidth*3 - 30) * scale,
+        height: (cardHeight*3 - 30) * scale,
+        innerWidth: (cardWidth*3 - 50) * scale,
+        innerHeight: (cardHeight*3 - 50) * scale,
         fontSize: 36 * scale,
         authorSize: 24 * scale,
       };
@@ -79,8 +67,8 @@ const ArticleCard = ({
       return {
         width: cardWidth * scale,
         height: cardHeight * scale,
-        innerWidth: 260 * scale,
-        innerHeight: 260 * scale,
+        innerWidth: (cardWidth-50) * scale,
+        innerHeight: (cardHeight-50) * scale,
         fontSize: 27 * scale,
         authorSize: 18 * scale,
       };

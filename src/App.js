@@ -12,7 +12,7 @@ import {
   Prime,
   Thirty,
 } from "./components/ArticleWindows";
-import Bricks from "./images/background-bricks.png";
+import Bricks from "./images/desktop/bricks.png";
 import ArticleGrid from "./components/ArticleGrid";
 import Landing from "./components/Landing";
 import Nav from "./components/Nav";
