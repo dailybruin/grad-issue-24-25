@@ -1,13 +1,12 @@
 import Window from "./Window";
-import newsBack from "../images/news.png";
-import artsBack from "../images/arts.png";
-import sportsBack from "../images/sports.png";
-import opinionBack from "../images/opinion.png";
-import quadBack from "../images/thequad.png";
-import multimediaBack from "../images/multimedia.png";
-import primeBack from "../images/prime.png";
-import thirtyBack from "../images/30.png";
-import bubbles from "../images/bubbles.png";
+import newsBack from "../images/desktop/news.png";
+import artsBack from "../images/desktop/arts.png";
+import sportsBack from "../images/desktop/sports.png";
+import opinionBack from "../images/desktop/opinion.png";
+import quadBack from "../images/desktop/thequad.png";
+import multimediaBack from "../images/desktop/multimedia.png";
+import primeBack from "../images/desktop/prime.png";
+import thirtyBack from "../images/desktop/30.png";
 
 const News = ({ articles }) => {
   // 15 news articles
