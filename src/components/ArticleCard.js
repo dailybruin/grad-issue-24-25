@@ -23,6 +23,7 @@ const ArticleCard = ({
   const [isHovered, setIsHovered] = useState(false);
   if (isPlaceholder) {
     const baseInner = cardWidth - 50;
+    // Use the same scaling logic as regular cards
     const scale = Math.min(windowWidth / shrinksAt, 1);
 
     return (
@@ -50,14 +51,14 @@ const ArticleCard = ({
 
   // sizing based on screen size
   const getCardDimensions = () => {
-      // for Prime article card ("large" card)
+    // for Prime article card ("large" card)
     if (isLarge) {
       const scale = Math.min(windowWidth / shrinksAt, 1); // same base as others
       return {
-        width: (cardWidth*3 - 30) * scale,
-        height: (cardHeight*3 - 30) * scale,
-        innerWidth: (cardWidth*3 - 50) * scale,
-        innerHeight: (cardHeight*3 - 50) * scale,
+        width: (cardWidth * 3 - 30) * scale,
+        height: (cardHeight * 3 - 30) * scale,
+        innerWidth: (cardWidth * 3 - 50) * scale,
+        innerHeight: (cardHeight * 3 - 50) * scale,
         fontSize: 36 * scale,
         authorSize: 24 * scale,
       };
@@ -67,8 +68,8 @@ const ArticleCard = ({
       return {
         width: cardWidth * scale,
         height: cardHeight * scale,
-        innerWidth: (cardWidth-50) * scale,
-        innerHeight: (cardHeight-50) * scale,
+        innerWidth: (cardWidth - 50) * scale,
+        innerHeight: (cardHeight - 50) * scale,
         fontSize: 27 * scale,
         authorSize: 18 * scale,
       };
@@ -181,9 +182,7 @@ const ArticleCard = ({
               {article_title}
               <br />
               <br />
-              <div style={authorStyle}>
-                By {author_byline}
-              </div>
+              <div style={authorStyle}>By {author_byline}</div>
             </div>
           )}
 
@@ -191,9 +190,7 @@ const ArticleCard = ({
           {isMobile && !isPlaceholder && (
             <div style={mobileTextStyle}>
               <div>{article_title}</div>
-              <div style={mobileAuthorStyle}>
-                By {author_byline}
-              </div>
+              <div style={mobileAuthorStyle}>By {author_byline}</div>
             </div>
           )}
         </a>

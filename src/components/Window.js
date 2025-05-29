@@ -8,14 +8,14 @@ import {
 } from "./constants.js";
 
 const Window = ({
-  id, 
+  id,
   backgroundImage,
   backgroundImageMobile,
   windowTitle = "MULTIMEDIA",
   articles = [],
   articlesMobile = [],
   articlesPerRow = null,
-  incCardHeightBy = 0, // Used to fill out inside the window by barely changing card height
+  incCardHeightBy = 0,
   isLarge = false,
   shrinksAt = WINDOW_WIDTH,
 }) => {
@@ -27,8 +27,6 @@ const Window = ({
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
-      // idk if there is a better way to do it but this is how I thought of doing mobile... we can't simply use size of window
-      // because that would interfere with the laptop resizing logic
       setIsMobile(
         /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
           navigator.userAgent
@@ -42,43 +40,41 @@ const Window = ({
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // calculate how much we should scale it by depending on what our window width is
   const isMac = navigator.platform.toUpperCase().indexOf("MAC") >= 0;
   const scale = isMac
     ? Math.min(windowWidth / shrinksAt, 1)
     : Math.min(windowWidth / (shrinksAt + 30), 1);
-  const scaledTopOffset = topOffset * scale;
 
-  // this is what we had before, except everything is more dynamic now
   const containerStyle = {
     position: "relative",
     display: "block",
-    width: "fit-content",
+    width: "100%",
+    maxWidth: "100vw",
+    overflowX: "hidden",
     margin: isMobile ? "30px auto" : "50px auto",
   };
 
-  // The window itself
-  const imageStyle = {
-    display: "block",
-    width: "auto",
-    maxWidth: "100%",
-    height: "auto",
+  const backgroundStyle = {
+    backgroundImage: `url(${isMobile ? backgroundImageMobile : backgroundImage})`,
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "contain",
+    backgroundPosition: "center",
+    // tried changing up mobile padding here
+    paddingTop: isMobile ? `${topOffset * scale * 0.65}px` : `${topOffset * scale}px`,
+    paddingBottom: "60px",
     position: "relative",
-    zIndex: !isLarge ? 3 : 1, // Window should be above cards, except PRIME (color spills into frame)
-    pointerEvents: "none", // Allows pointer events to go through the window (which is on top of the cards)
+    zIndex: 1,
+    width: "100%",
   };
 
-  // The article cards (all windows)
   const overlayContainer = {
-    position: "absolute",
-    top: `${scaledTopOffset}px`,
-    left: 0,
+    position: "relative",
     width: "100%",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    padding: "0",
-    zIndex: 2, // Cards are below window
+    gap: "0px",
+    zIndex: 2,
   };
 
   const flexOverlayRow = {
@@ -88,30 +84,18 @@ const Window = ({
     marginBottom: "0px",
   };
 
-  // determining how many articles in a row
-  let finalArticlesPerRow;
-  if (isMobile) {
-    finalArticlesPerRow = 2;
-  } else {
-    finalArticlesPerRow = 3;
-  }
-
-  // arrange all the articles into the rows
-  const rows = [];
+  let finalArticlesPerRow = isMobile ? 2 : 3;
   const targetArticles = isMobile ? articlesMobile : articles;
+
+  const rows = [];
   for (let i = 0; i < targetArticles.length; i += finalArticlesPerRow) {
     rows.push(targetArticles.slice(i, i + finalArticlesPerRow));
   }
+
   return (
     <div id={id} style={{ marginBottom: "160px" }}>
-      {" "}
       <div style={containerStyle}>
-        <div style={{ position: "relative", width: "fit-content" }}>
-          <img
-            src={isMobile ? backgroundImageMobile : backgroundImage}
-            alt={`${windowTitle} Window`}
-            style={imageStyle}
-          />
+        <div style={backgroundStyle}>
           <div style={overlayContainer}>
             {rows.map((row, rowIndex) => (
               <div key={rowIndex} style={flexOverlayRow}>
