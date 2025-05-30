@@ -61,7 +61,7 @@ const Window = ({
     backgroundPosition: "center",
     // tried changing up mobile padding here
     paddingTop: isMobile ? `${topOffset * scale * 0.65}px` : `${topOffset * scale}px`,
-    paddingBottom: "60px",
+    paddingBottom: "18px",
     position: "relative",
     zIndex: 1,
     width: "100%",
@@ -92,6 +92,9 @@ const Window = ({
     rows.push(targetArticles.slice(i, i + finalArticlesPerRow));
   }
 
+  let cardWidth = CARD_BACK_WIDTH;
+  let cardHeight = !isMobile ? CARD_BACK_HEIGHT + incCardHeightBy : CARD_BACK_HEIGHT + incCardHeightBy + 10;
+  
   return (
     <div id={id} style={{ marginBottom: "160px" }}>
       <div style={containerStyle}>
@@ -111,8 +114,8 @@ const Window = ({
                     isPlaceholder={article.isPlaceholder}
                     placeholderColor={article.placeholderColor}
                     windowWidth={windowWidth}
-                    cardWidth={CARD_BACK_WIDTH}
-                    cardHeight={CARD_BACK_HEIGHT + incCardHeightBy}
+                    cardWidth={cardWidth}
+                    cardHeight={cardHeight}
                     shrinksAt={shrinksAt}
                   />
                 ))}
