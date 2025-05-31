@@ -1,0 +1,23 @@
+[33m9248d47[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{0}: reset: moving to origin
+[33md7dac25[m HEAD@{1}: pull: Merge made by the 'ort' strategy.
+[33m07e701e[m HEAD@{2}: commit: merged + added data graphic + formatted letter + formatted about
+[33mb6d712c[m HEAD@{3}: commit (merge): Merge branch 'main' of https://github.com/dailybruin/grad-issue-24-25
+[33mbeb5ac3[m HEAD@{4}: commit: fixed up data graphic, sizing of letter
+[33m20d89fa[m HEAD@{5}: reset: moving to origin
+[33m20d89fa[m HEAD@{6}: pull: Fast-forward
+[33m5cc6f49[m HEAD@{7}: commit: added data graphic
+[33mde53681[m HEAD@{8}: commit: attempted letter, styled footer, fixed isLarge for mobile
+[33m8dc8dac[m HEAD@{9}: reset: moving to origin/main
+[33m8dc8dac[m HEAD@{10}: reset: moving to origin/main
+[33m8dc8dac[m HEAD@{11}: pull: Fast-forward
+[33m337be54[m HEAD@{12}: commit: article cards now fit in mobile, just need to adjust scaling and padding
+[33mf0b2e2b[m HEAD@{13}: pull: Fast-forward
+[33ma089679[m HEAD@{14}: pull: Fast-forward
+[33mc34e23f[m HEAD@{15}: reset: moving to origin/main
+[33mecd46db[m HEAD@{16}: pull: Merge made by the 'ort' strategy.
+[33ma27cc45[m HEAD@{17}: commit: 30 no longer overflows
+[33m1a8f2cc[m HEAD@{18}: commit: added background image
+[33mb5154ea[m HEAD@{19}: commit: improved scaling issues, article cards still a little too big and 30 has height issues
+[33m098672f[m HEAD@{20}: reset: moving to origin/main
+[33m098672f[m HEAD@{21}: reset: moving to main
+[33m098672f[m HEAD@{22}: clone: from https://github.com/dailybruin/grad-issue-24-25.git

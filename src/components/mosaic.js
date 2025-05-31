@@ -51,7 +51,6 @@ export default function Mosaic() {
   useEffect(() => {
     if (!paperRef.current || !containerWidth) return;
 
-    // ✅ Define your custom shape
     const JigsawPiece = joint.dia.Element.define(
       "jigsaw.Piece",
       {
@@ -59,7 +58,8 @@ export default function Mosaic() {
           polygon: {
             tabs: [0, 0, 0, 0],
             image: ["", 0, 0],
-            stroke: "#ddd",
+            stroke: "none",
+            strokeWidth: 0,
           },
         },
       },
@@ -76,7 +76,7 @@ export default function Mosaic() {
               const bottomLeft = refBBox.bottomLeft();
               const points = [origin, topRight, bottomRight, bottomLeft];
               return {
-                points: points.map((p) => p.x + "," + p.y).join(" "),
+                points: points.map((p) => `${p.x},${p.y}`).join(" "),
               };
             },
             unset: "points",
@@ -88,14 +88,13 @@ export default function Mosaic() {
               const model = this.model;
               const width = model.prop("size/width");
               const height = model.prop("size/height");
-              const id =
-                "image-pattern-" + width + "-" + height + "-" + image.join("-");
+              const id = `image-pattern-${width}-${height}-${image.join("-")}`;
               if (!paper.isDefined(id)) {
                 const tabSize = model.get("tabSize");
                 V(
                   "pattern",
                   {
-                    id: id,
+                    id,
                     x: -tabSize,
                     y: -tabSize,
                     width: width + 2 * tabSize,
@@ -104,7 +103,7 @@ export default function Mosaic() {
                   },
                   [
                     V("use", {
-                      "xlink:href": "#" + image[0],
+                      "xlink:href": `#${image[0]}`,
                       x: -(image[1] * width + tabSize),
                       y: -(image[2] * height + tabSize),
                     }),
@@ -112,7 +111,7 @@ export default function Mosaic() {
                 ).appendTo(paper.defs);
               }
               return {
-                fill: "url(#" + id + ")",
+                fill: `url(#${id})`,
               };
             },
             unset: "fill",
@@ -125,24 +124,26 @@ export default function Mosaic() {
     const PADDING = 30;
     const TAB_RATIO = 0.15;
     const IMAGE_ID = "puzzle-image";
-    const rows = 3;
-    const columns = 3;
+    const ROWS = 3;
+    const COLS = 3;
 
-    const availableWidth = containerWidth - 2 * PADDING;
-    const pieceSize = Math.floor(availableWidth / columns);
-    const width = columns * pieceSize;
-    const height = rows * pieceSize;
+    const snappedWidth =
+      Math.floor((containerWidth - 2 * PADDING) / (COLS * GRID)) * COLS * GRID;
+    const pieceSize = snappedWidth / COLS;
+    const width = pieceSize * COLS;
+    const height = pieceSize * ROWS;
 
     const graph = new joint.dia.Graph({}, { cellNamespace: joint.shapes });
+
     const paper = new joint.dia.Paper({
       el: paperRef.current,
       model: graph,
-      gridSize: GRID,
-      cellViewNamespace: joint.shapes,
-      async: true,
       width: width + 2 * PADDING,
       height: height + 2 * PADDING,
+      gridSize: GRID,
+      async: true,
       background: { color: "transparent" },
+      cellViewNamespace: joint.shapes,
     });
 
     V("image", {
@@ -151,16 +152,16 @@ export default function Mosaic() {
       "xlink:href": mosaicImg,
       x: 2 * TAB_RATIO * pieceSize,
       y: 2 * TAB_RATIO * pieceSize,
-      width: width,
-      height: height,
+      width,
+      height,
     }).appendTo(paper.defs);
 
     function generatePuzzle() {
-      graph.clear(); // Clear existing pieces before regenerating
+      graph.clear();
+      const pieces = [];
 
-      for (let r = 0; r < rows; r++) {
-        for (let c = 0; c < columns; c++) {
-          const tabs = [0, 0, 0, 0];
+      for (let r = 0; r < ROWS; r++) {
+        for (let c = 0; c < COLS; c++) {
           const piece = new JigsawPiece({
             position: {
               x: PADDING + c * pieceSize,
@@ -173,19 +174,50 @@ export default function Mosaic() {
             tabSize: TAB_RATIO * pieceSize,
             attrs: {
               polygon: {
-                tabs: tabs,
+                tabs: [0, 0, 0, 0],
                 image: [IMAGE_ID, c, r],
-                stroke: "#ddd",
-                strokeWidth: 2,
+                stroke: "none",
+                strokeWidth: 0,
               },
             },
           });
           piece.addTo(graph);
+          pieces.push(piece);
         }
+      }
+
+      return pieces;
+    }
+
+    function shufflePuzzle(pieces) {
+      for (let piece of pieces) {
+        const randomX = Math.round(
+          PADDING + Math.random() * (width - pieceSize)
+        );
+        const randomY = Math.round(
+          PADDING + Math.random() * (height - pieceSize)
+        );
+
+        const snapped = joint.g.Point(randomX, randomY).snapToGrid(GRID);
+
+        piece.transition("position", snapped.toJSON(), {
+          delay: 0,
+          duration: 800,
+          valueFunction: joint.util.interpolate.object,
+        });
+
+        piece.transition("angle", 0, {
+          delay: 0,
+          duration: 800,
+        });
+
+        piece.attr("polygon/stroke", "none");
+        piece.attr("polygon/strokeWidth", 0);
       }
     }
 
-    generatePuzzle();
+    const pieces = generatePuzzle();
+    shufflePuzzle(pieces);
   }, [containerWidth]);
 
   return (
