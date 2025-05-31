@@ -49,7 +49,6 @@ function App() {
         <Mosaic />
         <Letter/>
         <ArticleGrid props={data} />
-        {/* <About/> */}
         <Footer />
       </div>
     )

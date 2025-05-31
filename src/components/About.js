@@ -8,7 +8,7 @@ const About = () => {
         src={AboutImage}
         alt="About"
         style={{
-          width: '50%',
+          width: '73%',
           height: 'auto',
           objectFit: 'cover',
           display: 'block',
