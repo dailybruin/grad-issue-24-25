@@ -4,6 +4,7 @@ import {
   CARD_BACK_WIDTH,
   CARD_BACK_HEIGHT,
   WINDOW_WIDTH,
+  CARD_BORDER_ROUND_PX,
 } from "./constants.js";
 
 const ArticleCard = ({
@@ -42,7 +43,7 @@ const ArticleCard = ({
             backgroundColor: placeholderColor,
             width: `${baseInner * scale}px`,
             height: `${baseInner * scale}px`,
-            borderRadius: "25px",
+            borderRadius: `${CARD_BORDER_ROUND_PX}px`,
           }}
         />
       </div>
@@ -107,7 +108,7 @@ const ArticleCard = ({
   const innerStyle = {
     width: `${dimensions.innerWidth}px`,
     height: `${dimensions.innerHeight}px`,
-    borderRadius: "25px",
+    borderRadius: `${CARD_BORDER_ROUND_PX}px`,
     overflow: "hidden",
     position: "relative",
     cursor: "pointer",
