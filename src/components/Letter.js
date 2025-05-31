@@ -11,7 +11,8 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding: 40px 20px;
+  padding-top: 40px;
+  padding-bottom: 40px;
   background-image: url(${(props) =>
     props.$isMobile ? mobileBackground : desktopBackground});
   background-repeat: no-repeat;
@@ -24,8 +25,8 @@ const LetterBox = styled.div`
   // border: 1px solid #8b6b4a;
   border: none;
   padding: ${(props) => Math.max(props.$scale * 20, 10)}px;
-  width: 90%;
-  max-width: 800px;
+  width: 100%;
+  max-width: 900px;
   text-align: left;
   font-family: "Joan", serif;
   position: relative;
@@ -36,10 +37,8 @@ const LetterBox = styled.div`
   overflow-wrap: break-word;
   word-wrap: break-word;
   hyphens: auto;
-  
-  box-shadow:
-    inset 0 4px 10px rgba(0, 0, 0, 0.12),
-    0 0 0 10px #F1E7D3,                 
+
+  box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.12), 0 0 0 10px #f1e7d3,
     0 12px 24px rgba(168, 137, 74, 0.8);
 `;
 

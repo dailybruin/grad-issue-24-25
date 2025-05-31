@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Mosaic from "./components/mosaic";
 import {
   News,
   Sports,
@@ -44,8 +45,8 @@ function App() {
         <Nav />
         <Header />
         <Landing />
-        <Mosaic />
         <Letter/>
+        <Mosaic />
         <ArticleGrid props={data} />
         <Footer />
       </div>

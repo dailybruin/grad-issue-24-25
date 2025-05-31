@@ -1,14 +1,55 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import * as joint from "jointjs";
+import styled from "styled-components";
 import mosaicImg from "../images/mosaic.png";
+import desktopBackground from "../images/desktop/bricks.png";
+import mobileBackground from "../images/mobile/bricksMobile.png";
 
 const V = joint.V;
 
+const Container = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-image: url(${(props) =>
+    props.$isMobile ? mobileBackground : desktopBackground});
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+`;
+
+const MosaicContainer = styled.div`
+  width: 100%;
+  max-width: 975px;
+  margin: 0 auto;
+`;
+
 export default function Mosaic() {
   const paperRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
+  const [containerWidth, setContainerWidth] = useState(0);
 
   useEffect(() => {
-    if (!paperRef.current) return;
+    const handleResize = () => {
+      setIsMobile(
+        /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+          navigator.userAgent
+        )
+      );
+      if (paperRef.current?.parentElement) {
+        setContainerWidth(paperRef.current.parentElement.offsetWidth);
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (!paperRef.current || !containerWidth) return;
 
     // ✅ Define your custom shape
     const JigsawPiece = joint.dia.Element.define(
@@ -48,12 +89,7 @@ export default function Mosaic() {
               const width = model.prop("size/width");
               const height = model.prop("size/height");
               const id =
-                "image-pattern-" +
-                width +
-                "-" +
-                height +
-                "-" +
-                image.join("-");
+                "image-pattern-" + width + "-" + height + "-" + image.join("-");
               if (!paper.isDefined(id)) {
                 const tabSize = model.get("tabSize");
                 V(
@@ -86,12 +122,14 @@ export default function Mosaic() {
     );
 
     const GRID = 10;
-    const PADDING = 75;
+    const PADDING = 30;
     const TAB_RATIO = 0.15;
     const IMAGE_ID = "puzzle-image";
     const rows = 3;
     const columns = 3;
-    const pieceSize = 90;
+
+    const availableWidth = containerWidth - 2 * PADDING;
+    const pieceSize = Math.floor(availableWidth / columns);
     const width = columns * pieceSize;
     const height = rows * pieceSize;
 
@@ -102,6 +140,9 @@ export default function Mosaic() {
       gridSize: GRID,
       cellViewNamespace: joint.shapes,
       async: true,
+      width: width + 2 * PADDING,
+      height: height + 2 * PADDING,
+      background: { color: "transparent" },
     });
 
     V("image", {
@@ -115,6 +156,8 @@ export default function Mosaic() {
     }).appendTo(paper.defs);
 
     function generatePuzzle() {
+      graph.clear(); // Clear existing pieces before regenerating
+
       for (let r = 0; r < rows; r++) {
         for (let c = 0; c < columns; c++) {
           const tabs = [0, 0, 0, 0];
@@ -132,6 +175,8 @@ export default function Mosaic() {
               polygon: {
                 tabs: tabs,
                 image: [IMAGE_ID, c, r],
+                stroke: "#ddd",
+                strokeWidth: 2,
               },
             },
           });
@@ -141,11 +186,13 @@ export default function Mosaic() {
     }
 
     generatePuzzle();
-  }, []);
+  }, [containerWidth]);
 
   return (
-    <div style={{ width: "100%", overflowX: "auto" }}>
-      <div ref={paperRef} id="paper" />
-    </div>
+    <Container $isMobile={isMobile}>
+      <MosaicContainer>
+        <div ref={paperRef} id="paper" style={{ margin: "0 auto" }} />
+      </MosaicContainer>
+    </Container>
   );
 }
