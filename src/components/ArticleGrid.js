@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import desktopBackground from '../images/desktop/bricks.png'
 import mobileBackground from '../images/mobile/bricksMobile.png'
 import { Arts, Multimedia, News, Opinion, Prime, Sports, TheQuad, Thirty } from './ArticleWindows.js';
+import About from './About.js';
 
 
 const GridContainer = styled.div`
@@ -50,6 +51,7 @@ const ArticleGrid = ({ props }) => {
             <Multimedia articles={props.articles}/>
             <Prime articles={props.articles}/>
             <Thirty articles={props.articles}/>
+            <About/>
         </GridContainer>
     )
   }
