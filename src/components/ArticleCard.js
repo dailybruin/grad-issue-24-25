@@ -54,7 +54,7 @@ const ArticleCard = ({
     // for Prime article card ("large" card)
     if (isLarge) {
       const scale = Math.min(windowWidth / shrinksAt, 1); // same base as others
-      const mobileScale = isMobile ? 0.8 : 1; // Add a mobile scaling factor
+      const mobileScale = isMobile ? 0.70 : 1; // Add a mobile scaling factor
       return {
         width: (cardWidth * 3 - 30) * scale * mobileScale,
         height: (cardHeight * 3 - 30) * scale * mobileScale,

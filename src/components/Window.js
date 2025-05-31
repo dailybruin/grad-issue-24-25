@@ -64,7 +64,9 @@ const Window = ({
     paddingTop: isMobile
       ? `${topOffset * scale * 0.65}px`
       : `${topOffset * scale}px`,
-    paddingBottom: isMobile ? "18px" : "65px",
+    paddingBottom: isMobile
+      ? "18px"
+      : `${65 * scale}px`,
     position: "relative",
     zIndex: 3,
     width: "100%",
