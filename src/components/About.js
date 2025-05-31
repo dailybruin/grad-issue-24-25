@@ -12,7 +12,7 @@ const Container = styled.div`
 
   @media (max-width: 600px) {
     img {
-      width: 67% !important;
+      width: 90git % !important;
     }
   }
 `;
@@ -25,7 +25,7 @@ const About = ({ id }) => {
         src={AboutImage}
         alt="About"
         style={{
-          width: '50%',
+          width: '73%',
           height: 'auto',
           objectFit: 'cover',
           display: 'block',
