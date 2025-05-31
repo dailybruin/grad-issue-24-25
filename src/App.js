@@ -2,10 +2,23 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import {
+  News,
+  Sports,
+  Arts,
+  Opinion,
+  TheQuad,
+  Multimedia,
+  Prime,
+  Thirty,
+} from "./components/ArticleWindows";
+// import Bricks from "./images/desktop/bricks.png";
+import desktopBackground from './images/desktop/bricks.png'
+import mobileBackground from './images/mobile/bricksMobile.png'
 import ArticleGrid from "./components/ArticleGrid";
 import Landing from "./components/Landing";
 import Nav from "./components/Nav";
-import Mosaic from "./components/mosaic";
+import Letter from "./components/Letter";
 
 function App() {
   const [data, setData] = useState(null);
@@ -23,13 +36,16 @@ function App() {
       <div
         className="App"
         // style={{
-        //   backgroundImage: `url(${Bricks})`,
+        //   backgroundImage: `url(${props => props.$isMobile ? mobileBackground : desktopBackground})`,
+        //   backgroundRepeat: "repeat-y",
+        //   backgroundPosition: "right bottom",
         // }}
       >
         <Nav />
         <Header />
         <Landing />
         <Mosaic />
+        <Letter/>
         <ArticleGrid props={data} />
         <Footer />
       </div>
