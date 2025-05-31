@@ -54,13 +54,14 @@ const ArticleCard = ({
     // for Prime article card ("large" card)
     if (isLarge) {
       const scale = Math.min(windowWidth / shrinksAt, 1); // same base as others
+      const mobileScale = isMobile ? 0.8 : 1; // Add a mobile scaling factor
       return {
-        width: (cardWidth * 3 - 30) * scale,
-        height: (cardHeight * 3 - 30) * scale,
-        innerWidth: (cardWidth * 3 - 50) * scale,
-        innerHeight: (cardHeight * 3 - 50) * scale,
-        fontSize: 36 * scale,
-        authorSize: 24 * scale,
+        width: (cardWidth * 3 - 30) * scale * mobileScale,
+        height: (cardHeight * 3 - 30) * scale * mobileScale,
+        innerWidth: (cardWidth * 3 - 50) * scale * mobileScale,
+        innerHeight: (cardHeight * 3 - 50) * scale * mobileScale,
+        fontSize: 36 * scale * mobileScale,
+        authorSize: 24 * scale * mobileScale,
       };
       // "regular" card on a laptop
     } else {

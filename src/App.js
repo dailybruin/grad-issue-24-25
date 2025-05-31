@@ -17,7 +17,6 @@ import ArticleGrid from "./components/ArticleGrid";
 import Landing from "./components/Landing";
 import Nav from "./components/Nav";
 
-
 function App() {
   const [data, setData] = useState(null);
 
@@ -37,18 +36,10 @@ function App() {
         //   backgroundImage: `url(${Bricks})`,
         // }}
       >
-        <Nav/>
+        <Nav />
         <Header />
-        {/* <News articles={data.articles}/>
-        <Sports articles={data.articles}/>
-        <Arts articles={data.articles}/>
-        <Opinion articles={data.articles}/>
-        <TheQuad articles={data.articles}/>
-        <Multimedia articles={data.articles}/>
-        <Prime articles={data.articles}/>
-        <Thirty articles={data.articles}/> */}
-        <Landing/>
-        <ArticleGrid props={data}/>
+        <Landing />
+        <ArticleGrid props={data} />
         <Footer />
       </div>
     )

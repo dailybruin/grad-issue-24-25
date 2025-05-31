@@ -55,11 +55,15 @@ const Window = ({
   };
 
   const backgroundStyle = {
-    backgroundImage: `url(${isMobile ? backgroundImageMobile : backgroundImage})`,
+    backgroundImage: `url(${
+      isMobile ? backgroundImageMobile : backgroundImage
+    })`,
     backgroundRepeat: "no-repeat",
     backgroundSize: "contain",
     backgroundPosition: "center",
-    paddingTop: isMobile ? `${topOffset * scale * 0.65}px` : `${topOffset * scale}px`,
+    paddingTop: isMobile
+      ? `${topOffset * scale * 0.65}px`
+      : `${topOffset * scale}px`,
     paddingBottom: isMobile ? "18px" : "65px",
     position: "relative",
     zIndex: 3,
@@ -91,8 +95,10 @@ const Window = ({
     rows.push(targetArticles.slice(i, i + finalArticlesPerRow));
   }
 
-  let cardHeight = !isMobile ? CARD_BACK_HEIGHT + incCardHeightBy : CARD_BACK_HEIGHT + incCardHeightBy + 10;
-  
+  let cardHeight = !isMobile
+    ? CARD_BACK_HEIGHT + incCardHeightBy
+    : CARD_BACK_HEIGHT + incCardHeightBy + 10;
+
   return (
     <div id={id} style={{ marginBottom: "160px" }}>
       <div style={containerStyle}>
@@ -107,7 +113,7 @@ const Window = ({
                     article_url={article.article_url}
                     article_title={article.article_title}
                     author_byline={article.article_byline}
-                    isLarge={isLarge && !isMobile}
+                    isLarge={isLarge}
                     isMobile={isMobile}
                     isPlaceholder={article.isPlaceholder}
                     placeholderColor={article.placeholderColor}
