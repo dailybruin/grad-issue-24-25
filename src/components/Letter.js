@@ -18,6 +18,10 @@ const Container = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+
+  @media (max-width: 600px) {
+    width: 89%;
+  }
 `;
 
 const LetterBox = styled.div`
@@ -40,6 +44,10 @@ const LetterBox = styled.div`
 
   box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.12), 0 0 0 10px #f1e7d3,
     0 12px 24px rgba(168, 137, 74, 0.8);
+
+  @media (max-width: 600px) {
+    width: 70%;
+  }
 `;
 
 const LetterTitle = styled.h2`
