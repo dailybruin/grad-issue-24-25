@@ -105,28 +105,39 @@ const Window = ({
     <div id={id} style={{ marginBottom: "160px" }}>
       <div style={containerStyle}>
         <div style={backgroundStyle}>
-          <div style={overlayContainer}>
-            {rows.map((row, rowIndex) => (
-              <div key={rowIndex} style={flexOverlayRow}>
-                {row.map((article, cardIndex) => (
-                  <ArticleCard
-                    key={`${rowIndex}-${cardIndex}`}
-                    image={bubbles}
-                    article_url={article.article_url}
-                    article_title={article.article_title}
-                    author_byline={article.article_byline}
-                    isLarge={isLarge}
-                    isMobile={isMobile}
-                    isPlaceholder={article.isPlaceholder}
-                    placeholderColor={article.placeholderColor}
-                    windowWidth={windowWidth}
-                    cardWidth={CARD_BACK_WIDTH}
-                    cardHeight={cardHeight}
-                    shrinksAt={shrinksAt}
-                  />
-                ))}
-              </div>
-            ))}
+          {/* Black filler for each window, incase there's whitespace */}
+          {/* Feel free to remove this parent div below if it's causing problems */}
+          <div
+            style={{
+              backgroundColor: "black",
+              padding: "0px",
+              width: "58%",
+              margin: "0 auto",
+            }}
+          >
+            <div style={overlayContainer}>
+              {rows.map((row, rowIndex) => (
+                <div key={rowIndex} style={flexOverlayRow}>
+                  {row.map((article, cardIndex) => (
+                    <ArticleCard
+                      key={`${rowIndex}-${cardIndex}`}
+                      image={bubbles}
+                      article_url={article.article_url}
+                      article_title={article.article_title}
+                      author_byline={article.article_byline}
+                      isLarge={isLarge}
+                      isMobile={isMobile}
+                      isPlaceholder={article.isPlaceholder}
+                      placeholderColor={article.placeholderColor}
+                      windowWidth={windowWidth}
+                      cardWidth={CARD_BACK_WIDTH}
+                      cardHeight={cardHeight}
+                      shrinksAt={shrinksAt}
+                    />
+                  ))}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
