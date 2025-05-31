@@ -14,12 +14,13 @@ import {
   Thirty,
 } from "./components/ArticleWindows";
 // import Bricks from "./images/desktop/bricks.png";
-import desktopBackground from './images/desktop/bricks.png'
-import mobileBackground from './images/mobile/bricksMobile.png'
+import desktopBackground from "./images/desktop/bricks.png";
+import mobileBackground from "./images/mobile/bricksMobile.png";
 import ArticleGrid from "./components/ArticleGrid";
 import Landing from "./components/Landing";
 import Nav from "./components/Nav";
 import Letter from "./components/Letter";
+import About from "./components/About";
 
 function App() {
   const [data, setData] = useState(null);
@@ -45,9 +46,10 @@ function App() {
         <Nav />
         <Header />
         <Landing />
-        <Letter/>
         <Mosaic />
+        <Letter/>
         <ArticleGrid props={data} />
+        {/* <About/> */}
         <Footer />
       </div>
     )
