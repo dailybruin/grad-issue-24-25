@@ -1,20 +1,38 @@
 import React from 'react';
+import styled from 'styled-components';
 import AboutImage from '../images/About.png';
 
-const About = () => {
+const Container = styled.div`
+  width: 100%;
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 20%;
+
+  @media (max-width: 600px) {
+    img {
+      width: 67% !important;
+    }
+  }
+`;
+
+const About = ({ id }) => {
   return (
-    <div style={{ width: '100%', overflow: 'auto', display: 'flex', justifyContent: 'center', alignItems: 'center', paddingBottom: '20%'}}>
+    // <div style={{ width: '100%', overflow: 'auto', display: 'flex', justifyContent: 'center', alignItems: 'center', paddingBottom: '20%'}}>
+    <Container id={id}>
       <img
         src={AboutImage}
         alt="About"
         style={{
-          width: '73%',
+          width: '50%',
           height: 'auto',
           objectFit: 'cover',
           display: 'block',
         }}
       />
-    </div>
+    </Container>
+    // </div>
   );
 };
 

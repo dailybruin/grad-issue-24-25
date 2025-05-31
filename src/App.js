@@ -47,7 +47,7 @@ function App() {
         <Header />
         <Landing />
         <Mosaic />
-        <Letter/>
+        <div id="letter"><Letter/></div>
         <ArticleGrid props={data} />
         <Footer />
       </div>

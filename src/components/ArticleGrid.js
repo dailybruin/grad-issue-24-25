@@ -51,7 +51,9 @@ const ArticleGrid = ({ props }) => {
             <Multimedia articles={props.articles}/>
             <Prime articles={props.articles}/>
             <Thirty articles={props.articles}/>
-            <About/>
+             <div id="about">
+                <About />
+            </div>
         </GridContainer>
     )
   }
