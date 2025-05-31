@@ -56,10 +56,10 @@ const ArticleCard = ({
       const scale = Math.min(windowWidth / shrinksAt, 1); // same base as others
       const mobileScale = isMobile ? 0.70 : 1; // Add a mobile scaling factor
       return {
-        width: (cardWidth * 3 - 30) * scale * mobileScale,
-        height: (cardHeight * 3 - 30) * scale * mobileScale,
-        innerWidth: (cardWidth * 3 - 50) * scale * mobileScale,
-        innerHeight: (cardHeight * 3 - 50) * scale * mobileScale,
+        width: (cardWidth * 3 - 40) * scale * mobileScale,
+        height: (cardHeight * 3 - 35) * scale * mobileScale,
+        innerWidth: (cardWidth * 3 - 110) * scale * mobileScale,
+        innerHeight: (cardHeight * 3 - 110) * scale * mobileScale,
         fontSize: 36 * scale * mobileScale,
         authorSize: 24 * scale * mobileScale,
       };
@@ -95,7 +95,7 @@ const ArticleCard = ({
   // this is similar to what we had before, just more dynamic now
   const cardStyle = {
     backgroundColor: "black",
-    width: !isLarge ? `${dimensions.width}px` : `${dimensions.width + 8}px`, // More width for PRIME article, fills in side whitespace
+    width: !isLarge || isMobile ? `${dimensions.width}px` : `${dimensions.width + 8}px`, // More width for PRIME article, fills in side whitespace
     height: `${dimensions.height}px`,
     color: "white",
     display: "flex",
