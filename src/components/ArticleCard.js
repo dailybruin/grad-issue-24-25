@@ -78,7 +78,6 @@ const ArticleCard = ({
   };
 
   const dimensions = getCardDimensions();
-  const TEXT_CHAR_LIMIT = isMobile ? 100 : isLarge ? 150 : 82;
 
   // Commenting this out for now, it's cluttering the console
   /*

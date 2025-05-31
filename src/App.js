@@ -2,20 +2,10 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import {
-  News,
-  Sports,
-  Arts,
-  Opinion,
-  TheQuad,
-  Multimedia,
-  Prime,
-  Thirty,
-} from "./components/ArticleWindows";
-import Bricks from "./images/desktop/bricks.png";
 import ArticleGrid from "./components/ArticleGrid";
 import Landing from "./components/Landing";
 import Nav from "./components/Nav";
+import Mosaic from "./components/mosaic";
 
 function App() {
   const [data, setData] = useState(null);
@@ -39,6 +29,7 @@ function App() {
         <Nav />
         <Header />
         <Landing />
+        <Mosaic />
         <ArticleGrid props={data} />
         <Footer />
       </div>

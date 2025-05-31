@@ -17,25 +17,6 @@ const GridContainer = styled.div`
   background-position: center;
 `;
 
-const Articles = styled.div`
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-
-    & > div {
-        position: relative;
-    }
-
-    & > div:nth-child(even) {
-        margin-top: 29em;
-    }
-
-    & > div:nth-child(odd) {
-        left: 2em;
-        margin-top: 2em;
-    }
-`;
-
 const ArticleGrid = ({ props }) => {
     const [isMobile, setIsMobile] = useState(false);
 
