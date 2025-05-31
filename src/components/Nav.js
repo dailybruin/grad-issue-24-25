@@ -46,9 +46,9 @@ const Section = styled("a")`
   }
 
   &:hover {
-    background-color: #F1E7D3; /* Light background on hover */
+    background-color: #F1E7D3;
     border: 2px solid #826324;
-    color: black; /* Dark text on hover */
+    color: black;
     margin: 0px 0px;
   }
 `;

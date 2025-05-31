@@ -21,9 +21,29 @@ import Landing from "./components/Landing";
 import Nav from "./components/Nav";
 import Letter from "./components/Letter";
 import About from "./components/About";
+import MobileNav from "./components/MobileNav";
+import MobileHeader from "./components/MobileHeader";
+import MobileLanding from "./components/MobileLanding";
 
 function App() {
   const [data, setData] = useState(null);
+
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(
+        /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+          navigator.userAgent
+        ) || (window.innerWidth < 700)
+        // OR if it is smaller desktop screen, just change to mobile header with mobile dropdown navbar
+      );
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     fetch(
@@ -43,9 +63,18 @@ function App() {
         //   backgroundPosition: "right bottom",
         // }}
       >
-        <Nav />
-        <Header />
-        <Landing />
+        {isMobile ? (
+          <>
+          <MobileHeader style={{marginBottom: 0}}/>
+          <MobileLanding/>
+          </>
+        ) : (
+          <>
+            <Nav />
+            <Header />
+            <Landing/>
+          </>
+        )}
         <Mosaic />
         <div id="letter"><Letter/></div>
         <ArticleGrid props={data} />

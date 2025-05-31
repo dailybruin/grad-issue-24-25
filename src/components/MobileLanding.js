@@ -8,7 +8,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   background-color: black;
-  padding-top: 32px;
+  padding-top: 0px;
 `;
 
 const Background = styled.img`
@@ -19,7 +19,7 @@ const Background = styled.img`
 `;
 
 
-const Landing = () => {
+const MobileLanding = () => {
   return (
     <Container>
       <Background src={GradIssuesLanding} alt="Grad Issues Landing" />
@@ -27,4 +27,4 @@ const Landing = () => {
   );
 };
 
-export default Landing;
+export default MobileLanding;

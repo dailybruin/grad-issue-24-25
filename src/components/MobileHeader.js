@@ -1,0 +1,41 @@
+import styled from 'styled-components'
+
+import {ReactComponent as DBLogo} from '../images/DailyBruinLogo.svg'
+import MobileNav from './MobileNav';
+
+const DBHeader = styled("div")`
+  z-index: 2001;
+
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  background: #EBD9B6;
+  width: 100%;
+  padding: 0.2em 0;
+  font-family: 'ITC Century';
+  font-style: normal;
+  font-weight: 400;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 18px;
+  line-height: 21.6px;
+  color: #826324;
+`;
+
+const StyledLogo = styled(DBLogo)`
+  fill: #826324;
+`;
+
+const MobileHeader = () => {
+  return (
+    <DBHeader>
+    {/* Daily Bruin */}
+    <MobileNav/>
+    <a href="https://dailybruin.com">
+        <StyledLogo />
+    </a>
+    </DBHeader>
+  )
+}
+
+export default MobileHeader;
