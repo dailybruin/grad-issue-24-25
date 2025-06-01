@@ -75,8 +75,6 @@ function App() {
             <Landing/>
           </>
         )}
-        <Mosaic />
-        <div id="letter"><Letter/></div>
         <ArticleGrid props={data} />
         <Footer />
       </div>

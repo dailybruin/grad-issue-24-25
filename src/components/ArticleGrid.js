@@ -4,6 +4,8 @@ import desktopBackground from '../images/desktop/bricks.png'
 import mobileBackground from '../images/mobile/bricksMobile.png'
 import { Arts, Multimedia, News, Opinion, Prime, Sports, TheQuad, Thirty } from './ArticleWindows.js';
 import About from './About.js';
+import Letter from './Letter.js';
+import Mosaic from './mosaic.js';
 
 
 const GridContainer = styled.div`
@@ -43,6 +45,12 @@ const ArticleGrid = ({ props }) => {
                 return <ArticleCard props={article} />;
              })}
             </Articles> */}
+            <div id="letter">
+                <Letter />
+            </div>
+            <div id="interactive">
+              <Mosaic/>
+            </div>
             <News articles={props.articles}/>
             <Sports articles={props.articles}/>
             <Arts articles={props.articles}/>

@@ -5,7 +5,6 @@ const Container = styled("div")`
   width: 100%;
   display: flex;
   justify-content: center;
-  overflow-x: auto;
   position: fixed;
   z-index: 1000;
   align-content: center;
@@ -17,6 +16,7 @@ const Container = styled("div")`
 `;
 
 const Section = styled("a")`
+  min-width: 0;
   padding: 0.5em 1.5em;
   margin: 1px 1px;
   color: #826324;

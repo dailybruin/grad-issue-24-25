@@ -2,8 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import * as joint from "jointjs";
 import styled from "styled-components";
 import mosaicImg from "../images/mosaic.png";
-import desktopBackground from "../images/desktop/bricks.png";
-import mobileBackground from "../images/mobile/bricksMobile.png";
 
 const V = joint.V;
 
@@ -13,11 +11,6 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  background-image: url(${(props) =>
-    props.$isMobile ? mobileBackground : desktopBackground});
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
 `;
 
 const MosaicContainer = styled.div`
@@ -28,16 +21,10 @@ const MosaicContainer = styled.div`
 
 export default function Mosaic() {
   const paperRef = useRef(null);
-  const [isMobile, setIsMobile] = useState(false);
   const [containerWidth, setContainerWidth] = useState(0);
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(
-        /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-          navigator.userAgent
-        )
-      );
       if (paperRef.current?.parentElement) {
         setContainerWidth(paperRef.current.parentElement.offsetWidth);
       }
@@ -221,7 +208,7 @@ export default function Mosaic() {
   }, [containerWidth]);
 
   return (
-    <Container $isMobile={isMobile}>
+    <Container>
       <MosaicContainer>
         <div ref={paperRef} id="paper" style={{ margin: "0 auto" }} />
       </MosaicContainer>
