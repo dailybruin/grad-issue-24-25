@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import GradIssuesLanding from "../images/landing.gif";
+import LandingVideo from "../images/landing.mp4";
 
 const Container = styled.div`
   width: 100%;
@@ -11,18 +11,24 @@ const Container = styled.div`
   padding-top: 32px;
 `;
 
-const Background = styled.img`
+const BackgroundVideo = styled.video`
   width: 100%;
   height: auto;
   object-fit: contain;
-  display: block; 
+  display: block;
+  pointer-events: none;
 `;
-
 
 const Landing = () => {
   return (
     <Container>
-      <Background src={GradIssuesLanding} alt="Grad Issues Landing" />
+      <BackgroundVideo
+        src={LandingVideo}
+        autoPlay
+        loop
+        muted
+        playsInline
+      />
     </Container>
   );
 };
