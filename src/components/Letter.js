@@ -170,15 +170,15 @@ const Letter = ({ id }) => {
             rel="noopener noreferrer"
           >
             cancelled classes
-          </StyledLink>
-          {" "}and subsequently{" "}
+          </StyledLink>{" "}
+          and subsequently{" "}
           <StyledLink
             href="https://dailybruin.com/2025/01/11/ucla-extends-remote-instruction-through-friday-as-evacuation-zones-near-campus"
             rel="noopener noreferrer"
           >
             moved to remote instruction
-          </StyledLink>
-          {" "}in response to some of the most destructive fires in California
+          </StyledLink>{" "}
+          in response to some of the most destructive fires in California
           history.
         </Paragraph>
         <Paragraph $scale={scale}>
@@ -200,8 +200,8 @@ const Letter = ({ id }) => {
             rel="noopener noreferrer"
           >
             Bunche Hall community kitchen
-          </StyledLink>
-          {" "}to provide free meals. People reacted to January’s fires by{" "}
+          </StyledLink>{" "}
+          to provide free meals. People reacted to January’s fires by{" "}
           <StyledLink
             href="https://dailybruin.com/2025/01/08/westwood-recreation-center-provides-shelter-essential-resources-amid-la-fires"
             rel="noopener noreferrer"
@@ -228,21 +228,21 @@ const Letter = ({ id }) => {
             rel="noopener noreferrer"
           >
             dedicated
-          </StyledLink>
-          {" "}a performance marking their season start to January’s firefighters.
+          </StyledLink>{" "}
+          a performance marking their season start to January’s firefighters.
         </Paragraph>
-        <Paragraph>
+        <Paragraph $scale={scale}>
           So it only seemed appropriate that we focus this year’s Graduation
           Issue on forging growth out of the ashes.
         </Paragraph>
-        <Paragraph>
+        <Paragraph $scale={scale}>
           We are living in uncertain times. The Trump administration has
           targeted international and undocumented students. The federal
           government has cancelled research grants. The university will face
           significant funding cuts. Students have expressed fear, anxiety and
           despair about what lies ahead.
         </Paragraph>
-        <Paragraph>
+        <Paragraph $scale={scale}>
           Even though we’re staring down the barrel of another unprecedented
           year, we will continue to fulfill our mission. The Daily Bruin will
           keep telling our community’s stories. We will spotlight beauty. We
@@ -251,7 +251,7 @@ const Letter = ({ id }) => {
           make the seniors who have sacrificed to keep our paper going proud of
           us.
         </Paragraph>
-        <Paragraph>
+        <Paragraph $scale={scale}>
           We’re confident that out of the flames of unprecedented destruction,
           our students will bring beauty to the world – it's what we’ve been
           taught to do. And through it all, our writers, coders, reporters,
