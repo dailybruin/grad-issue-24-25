@@ -29,7 +29,6 @@ export default function Mosaic() {
         setContainerWidth(paperRef.current.parentElement.offsetWidth);
       }
     };
-
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
@@ -108,7 +107,7 @@ export default function Mosaic() {
     );
 
     const GRID = 10;
-    const PADDING = 30;
+    const PADDING = 75;
     const TAB_RATIO = 0.15;
     const IMAGE_ID = "puzzle-image";
     const ROWS = 3;
@@ -129,8 +128,17 @@ export default function Mosaic() {
       height: height + 2 * PADDING,
       gridSize: GRID,
       async: true,
+      clickThreshold: 5,
       background: { color: "transparent" },
       cellViewNamespace: joint.shapes,
+    });
+
+    paper.on("cell:pointerdown", (pieceView) => {
+      pieceView.model.toFront();
+      pieceView.highlight("polygon");
+    });
+    paper.on("cell:pointerup", (pieceView) => {
+      pieceView.unhighlight("polygon");
     });
 
     V("image", {
@@ -146,7 +154,6 @@ export default function Mosaic() {
     function generatePuzzle() {
       graph.clear();
       const pieces = [];
-
       for (let r = 0; r < ROWS; r++) {
         for (let c = 0; c < COLS; c++) {
           const piece = new JigsawPiece({
@@ -172,34 +179,23 @@ export default function Mosaic() {
           pieces.push(piece);
         }
       }
-
       return pieces;
     }
 
     function shufflePuzzle(pieces) {
       for (let piece of pieces) {
-        const randomX = Math.round(
-          PADDING + Math.random() * (width - pieceSize)
-        );
-        const randomY = Math.round(
-          PADDING + Math.random() * (height - pieceSize)
-        );
-
+        const randomX = PADDING + Math.random() * width - pieceSize / 2;
+        const randomY = PADDING + Math.random() * height - pieceSize / 2;
         const snapped = joint.g.Point(randomX, randomY).snapToGrid(GRID);
-
         piece.transition("position", snapped.toJSON(), {
           delay: 0,
-          duration: 800,
+          duration: 1000,
           valueFunction: joint.util.interpolate.object,
         });
-
         piece.transition("angle", 0, {
           delay: 0,
-          duration: 800,
+          duration: 1000,
         });
-
-        piece.attr("polygon/stroke", "none");
-        piece.attr("polygon/strokeWidth", 0);
       }
     }
 
