@@ -16,7 +16,7 @@ const Container = styled.div`
 const LetterBox = styled.div`
   background-color: #f7edd5;
   border: none;
-  width: '70%';
+  width: "70%";
   max-width: 900px;
   text-align: left;
   font-family: "Joan", serif;
@@ -37,7 +37,7 @@ const LetterBox = styled.div`
     // width: 70%;
     width: 90%;
   }
-  
+
   @media (min-width: 600px) and (max-width: 800px) {
     // width: 70%;
     width: 90%;
@@ -47,7 +47,6 @@ const LetterBox = styled.div`
     // width: 70%;
     width: 90%;
   }
-
 `;
 
 const LetterTitle = styled.h2`
@@ -96,6 +95,16 @@ const Name = styled.span`
   font-size: ${(props) => Math.max(props.$scale * 16, 14)}px;
 `;
 
+const StyledLink = styled.a`
+  color: #8b6b4a;
+  text-decoration: underline;
+  font-family: "Joan", serif;
+
+  &:hover {
+    text-decoration: none;
+  }
+`;
+
 const Letter = ({ id }) => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
@@ -116,38 +125,144 @@ const Letter = ({ id }) => {
       <LetterBox>
         <LetterTitle $scale={scale}>LETTER</LetterTitle>
         <LetterSubtitle $scale={scale}>FROM THE EDITORS</LetterSubtitle>
-
         <Paragraph $scale={scale}>Dear readers,</Paragraph>
-
         <Paragraph $scale={scale}>
-          This is a letter from the editors. This is a letter from the editors.
-          This is a letter from the editors. This is a letter from the editors.
-          This is a letter from the editors. This is a letter from the editors.
+          The word “unprecedented” loses its meaning more and more each year.
         </Paragraph>
-
         <Paragraph $scale={scale}>
-          This is a letter from the editors. This is a letter from the editors.
-          This is a letter from the editors. This is a letter from the editors.
-          This is a letter from the editors. This is a letter from the editors.
+          Our graduating class came of age during an unprecedented pandemic,{" "}
+          <StyledLink
+            href="https://dailybruin.com/2022/01/07/ucla-extends-online-instruction-until-jan-28-amid-rising-covid-19-cases"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            learning from home
+          </StyledLink>{" "}
+          or in isolation. Their second year was interrupted by the{" "}
+          <StyledLink
+            href="https://dailybruin.com/2022/11/14/uc-academic-workers-walk-out-in-largest-us-strike-since-2019"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            largest academic strike
+          </StyledLink>{" "}
+          in higher education history, losing discussion sections for weeks and
+          having final exams cancelled. Last year, hundreds of students formed
+          the{" "}
+          <StyledLink
+            href="https://dailybruin.com/tag/sjp-encampment"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Palestine solidarity encampment
+          </StyledLink>
+          , walking out of their classes and being attacked with{" "}
+          <StyledLink
+            href="https://dailybruin.com/2024/05/01/pro-israel-counter-protesters-attempt-to-storm-encampment-sparking-violence"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            unprecedented violence
+          </StyledLink>
+          . Just this January, the university again{" "}
+          <StyledLink
+            href="https://dailybruin.com/2025/01/08/ucla-cancels-in-person-classes-amid-los-angeles-fires"
+            rel="noopener noreferrer"
+          >
+            cancelled classes
+          </StyledLink>
+          {" "}and subsequently{" "}
+          <StyledLink
+            href="https://dailybruin.com/2025/01/11/ucla-extends-remote-instruction-through-friday-as-evacuation-zones-near-campus"
+            rel="noopener noreferrer"
+          >
+            moved to remote instruction
+          </StyledLink>
+          {" "}in response to some of the most destructive fires in California
+          history.
         </Paragraph>
-
         <Paragraph $scale={scale}>
-          This is a letter from the editors. This is a letter from the editors.
-          This is a letter from the editors. This is a letter from the editors.
-          This is a letter from the editors. This is a letter from the editors.
+          The students graduating this year will not have had it easy.
         </Paragraph>
-
         <Paragraph $scale={scale}>
-          This is a letter from the editors. This is a letter from the editors.
-          This is a letter from the editors. This is a letter from the editors.
-          This is a letter from the editors. This is a letter from the editors.
+          The Daily Bruin has showcased our community’s response to adversity.
+          We have covered the pain that Bruins have felt. We have also covered
+          the beauty. The pandemic sparked innovation that{" "}
+          <StyledLink
+            href="https://prime.dailybruin.com/englishlearning"
+            rel="noopener noreferrer"
+          >
+            broke barriers to learning
+          </StyledLink>
+          . Striking workers set up a{" "}
+          <StyledLink
+            href="https://dailybruin.com/2023/05/21/kitchen-committee-provides-free-meals-for-uaw-strikers"
+            rel="noopener noreferrer"
+          >
+            Bunche Hall community kitchen
+          </StyledLink>
+          {" "}to provide free meals. People reacted to January’s fires by{" "}
+          <StyledLink
+            href="https://dailybruin.com/2025/01/08/westwood-recreation-center-provides-shelter-essential-resources-amid-la-fires"
+            rel="noopener noreferrer"
+          >
+            donating supplies to evacuees
+          </StyledLink>
+          ,{" "}
+          <StyledLink
+            href="https://dailybruin.com/2025/02/11/theatre-palisades-continues-legacy-of-community-creativity-after-la-county-fires"
+            rel="noopener noreferrer"
+          >
+            preserving their community theater{" "}
+          </StyledLink>
+          and{" "}
+          <StyledLink
+            href="https://dailybruin.com/2025/03/15/prime-after-the-fire"
+            rel="noopener noreferrer"
+          >
+            supporting their communities
+          </StyledLink>
+          . UCLA women’s basketball{" "}
+          <StyledLink
+            href="https://dailybruin.com/2025/01/15/ucla-womens-basketball-roars-to-best-ever-season-start-with-win-over-penn-state"
+            rel="noopener noreferrer"
+          >
+            dedicated
+          </StyledLink>
+          {" "}a performance marking their season start to January’s firefighters.
         </Paragraph>
-
+        <Paragraph>
+          So it only seemed appropriate that we focus this year’s Graduation
+          Issue on forging growth out of the ashes.
+        </Paragraph>
+        <Paragraph>
+          We are living in uncertain times. The Trump administration has
+          targeted international and undocumented students. The federal
+          government has cancelled research grants. The university will face
+          significant funding cuts. Students have expressed fear, anxiety and
+          despair about what lies ahead.
+        </Paragraph>
+        <Paragraph>
+          Even though we’re staring down the barrel of another unprecedented
+          year, we will continue to fulfill our mission. The Daily Bruin will
+          keep telling our community’s stories. We will spotlight beauty. We
+          will keep those in power accountable. We will give a voice to people
+          who don’t have one. We will fight for diversity and inclusion. We will
+          make the seniors who have sacrificed to keep our paper going proud of
+          us.
+        </Paragraph>
+        <Paragraph>
+          We’re confident that out of the flames of unprecedented destruction,
+          our students will bring beauty to the world – it's what we’ve been
+          taught to do. And through it all, our writers, coders, reporters,
+          presenters, photojournalists, editors, artists and videographers will
+          keep telling those stories.
+        </Paragraph>
         <Signature $scale={scale}>
-          Signoff,
-          <Name $scale={scale}>NAME</Name>
-          <Name $scale={scale}>NAME</Name>
-          <Name $scale={scale}>NAME</Name>
+          Yours faithfully,
+          <Name $scale={scale}>Dylan Winward | Editor in chief</Name>
+          <Name $scale={scale}>Shiv Patel | Managing editor</Name>
+          <Name $scale={scale}>Zimo Li | Digital managing editor</Name>
         </Signature>
       </LetterBox>
     </Container>
