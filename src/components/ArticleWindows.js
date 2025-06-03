@@ -216,17 +216,20 @@ const Prime = ({ articles }) => {
 };
 
 const Thirty = ({ articles }) => {
-  // 30 thirty articles 
+  // 33 thirty articles 
 
-  // temporarily hard coding to match 33 articles sizes for TESTING purposes
-  const temp15articles = [...articles];
+  // temporarily hard coding to match 32 articles sizes for TESTING purposes
+  const temp33articles = [...articles];
   
-  while (temp15articles.length < 33) {
-    temp15articles.push(...articles); 
+  while (temp33articles.length < 32) {
+    temp33articles.push(...articles); 
   }
-  const temp15articles2 = temp15articles.slice(0, 33);
+  const temp33articles2 = temp33articles.slice(0, 32);
+  const updatedArticles = insertPlaceholders(temp33articles2, [33], [
+    "#C69394"
+  ]);
 
-  const updatedArticlesMobile = insertPlaceholders(temp15articles2, [33], [
+  const updatedArticlesMobile = insertPlaceholders(temp33articles2, [33], [
     "#82A8C7"
   ]);
 
@@ -236,7 +239,7 @@ const Thirty = ({ articles }) => {
       backgroundImage={thirtyBack}
       backgroundImageMobile={thirtyBackMobile}
       windowTitle="THIRTY"
-      articles={temp15articles2} // FIXME: later fix this
+      articles={updatedArticles} // FIXME: later fix this
       articlesMobile={updatedArticlesMobile}  // FIXME: later fix this
       shrinksAt={1064}
       incCardHeightBy={3}
