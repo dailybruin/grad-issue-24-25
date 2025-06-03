@@ -1,4 +1,3 @@
-// src/components/LetterFromEditors.js
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { WINDOW_WIDTH } from "./constants.js";
@@ -8,16 +7,21 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 71%;
   padding-top: 40px;
   padding-bottom: 40px;
+  margin-left: 14.5%;
+
+  @media (max-width: 768px) { /* Grouping smaller screens */
+    width: 65%;
+    margin-left: 17.5%;
+  }
 `;
 
 const LetterBox = styled.div`
   background-color: #f7edd5;
   border: none;
-  width: "70%";
-  max-width: 900px;
+  width: 100%; /* Relative to Container */
   text-align: left;
   font-family: "Joan", serif;
   position: relative;
@@ -32,21 +36,6 @@ const LetterBox = styled.div`
 
   box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.12), 0 0 0 10px #f1e7d3,
     0 12px 24px rgba(168, 137, 74, 0.8);
-
-  @media (min-width: 200px) and (max-width: 600px) {
-    // width: 70%;
-    width: 90%;
-  }
-
-  @media (min-width: 600px) and (max-width: 800px) {
-    // width: 70%;
-    width: 90%;
-  }
-
-  @media (min-width: 800px) {
-    // width: 70%;
-    width: 90%;
-  }
 `;
 
 const LetterTitle = styled.h2`
