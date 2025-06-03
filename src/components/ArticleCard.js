@@ -113,7 +113,7 @@ const ArticleCard = ({
   const innerStyle = {
     width: `${dimensions.innerWidth}px`,
     height: `${dimensions.innerHeight}px`,
-    borderRadius: `${CARD_BORDER_ROUND_PX}px`,
+    borderRadius: `${isMobile ? CARD_BORDER_ROUND_PX-12 : CARD_BORDER_ROUND_PX}px`,
     overflow: "hidden",
     position: "relative",
     cursor: "pointer",
@@ -161,11 +161,11 @@ const ArticleCard = ({
     padding: "20px 3px 5px",
     textAlign: "center",
     fontFamily: "Joan, serif",
-    fontSize: "11px",
+    fontSize: "9px",
   };
 
   const mobileAuthorStyle = {
-    fontSize: "10px",
+    fontSize: "7px",
     marginTop: "6px",
   };
 
@@ -194,7 +194,7 @@ const ArticleCard = ({
             </div>
           )}
 
-          {/* no hover on mobile (change?) */}
+          {/* no hover on mobile */}
           {isMobile && !isPlaceholder && (
             <div style={mobileTextStyle}>
               <div>{article_title}</div>
