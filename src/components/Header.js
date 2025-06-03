@@ -1,6 +1,6 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
-import {ReactComponent as DBLogo} from '../images/DailyBruinLogo.svg'
+import { ReactComponent as DBLogo } from "../images/DailyBruinLogo.svg";
 
 const DBHeader = styled("div")`
   z-index: 2001;
@@ -8,16 +8,16 @@ const DBHeader = styled("div")`
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-  background: #EBD9B6;
+  background: #ebd9b6;
   width: 100%;
   padding: 0.2em 0;
-  font-family: 'ITC Century';
+  font-family: "ITC Century";
   font-style: normal;
   font-weight: 400;
   text-align: center;
   text-transform: uppercase;
-  font-size: 18px;
-  line-height: 21.6px;
+  font-size: 16px;
+  line-height: 19.2px;
   color: #826324;
 `;
 
@@ -33,7 +33,7 @@ const Header = () => {
         <StyledLogo />
       </a>
     </DBHeader>
-  )
-}
+  );
+};
 
 export default Header;

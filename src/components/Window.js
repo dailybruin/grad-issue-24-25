@@ -19,7 +19,7 @@ const Window = ({
   isLarge = false,
   shrinksAt = WINDOW_WIDTH,
 }) => {
-  const topOffset = 350;
+  const topOffset = 316;
 
   const [isMobile, setIsMobile] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -64,11 +64,9 @@ const Window = ({
     paddingTop: isMobile
       ? `${topOffset * scale * 0.65}px`
       : `${topOffset * scale}px`,
-    paddingBottom: isMobile
-      ? "18px"
-      : `${65 * scale}px`,
+    paddingBottom: isMobile ? "18px" : `${65 * scale}px`,
     position: "relative",
-    zIndex: 3,
+    zIndex: isMobile ? 4 : 3,
     width: "100%",
   };
 
@@ -79,7 +77,7 @@ const Window = ({
     flexDirection: "column",
     alignItems: "center",
     gap: "0px",
-    zIndex: 2,
+    zIndex: isMobile ? 1 : 2,
   };
 
   const flexOverlayRow = {
@@ -102,19 +100,30 @@ const Window = ({
     : CARD_BACK_HEIGHT + incCardHeightBy + 10;
 
   return (
-    <div id={id} style={{ marginBottom: "160px" }}>
+    <div id={id} style={{ marginBottom: isMobile ? "80px" : "160px" }}>
       <div style={containerStyle}>
-        <div style={backgroundStyle}>
-          {/* Black filler for each window, incase there's whitespace */}
-          {/* Feel free to remove this parent div below if it's causing problems */}
+        <div
+          style={{
+            position: "relative",
+          }}
+        >
+          {/* Black filler for each window, moved behind the background */}
           <div
             style={{
               backgroundColor: "black",
               padding: "0px",
               width: "58%",
               margin: "0 auto",
+              position: "absolute",
+              top: isMobile
+                ? `${topOffset * scale * 0.65}px`
+                : `${topOffset * scale}px`,
+              left: "21%",
+              bottom: isMobile ? "18px" : `${65 * scale}px`,
+              zIndex: 1,
             }}
-          >
+          />
+          <div style={backgroundStyle}>
             <div style={overlayContainer}>
               {rows.map((row, rowIndex) => (
                 <div key={rowIndex} style={flexOverlayRow}>

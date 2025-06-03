@@ -55,14 +55,14 @@ const ArticleCard = ({
     // for Prime article card ("large" card)
     if (isLarge) {
       const scale = Math.min(windowWidth / shrinksAt, 1); // same base as others
-      const mobileScale = isMobile ? 0.70 : 1; // Add a mobile scaling factor
+      const mobileScale = isMobile ? 0.7 : 1; // Add a mobile scaling factor
       return {
-        width: (cardWidth * 3 - 40) * scale * mobileScale,
-        height: (cardHeight * 3 - 35) * scale * mobileScale,
-        innerWidth: (cardWidth * 3 - 110) * scale * mobileScale,
-        innerHeight: (cardHeight * 3 - 110) * scale * mobileScale,
-        fontSize: 36 * scale * mobileScale,
-        authorSize: 24 * scale * mobileScale,
+        width: (cardWidth * 3 - 10) * scale * mobileScale,
+        height: (cardHeight * 3 - 5) * scale * mobileScale,
+        innerWidth: (cardWidth * 3 - 80) * scale * mobileScale,
+        innerHeight: (cardHeight * 3 - 80) * scale * mobileScale,
+        fontSize: 28 * scale * mobileScale,
+        authorSize: 18 * scale * mobileScale,
       };
       // "regular" card on a laptop
     } else {
@@ -72,8 +72,8 @@ const ArticleCard = ({
         height: cardHeight * scale,
         innerWidth: (cardWidth - 50) * scale,
         innerHeight: (cardHeight - 50) * scale,
-        fontSize: 27 * scale,
-        authorSize: 18 * scale,
+        fontSize: 22 * scale, // Increased from 18
+        authorSize: 14 * scale, // Increased from 12
       };
     }
   };
@@ -95,14 +95,19 @@ const ArticleCard = ({
 
   // this is similar to what we had before, just more dynamic now
   const cardStyle = {
-    backgroundColor: "black",
-    width: !isLarge || isMobile ? `${dimensions.width}px` : `${dimensions.width + 8}px`, // More width for PRIME article, fills in side whitespace
+    backgroundColor: isMobile ? "transparent" : "black",
+    width:
+      !isLarge || isMobile
+        ? `${dimensions.width}px`
+        : `${dimensions.width + 8}px`,
     height: `${dimensions.height}px`,
     color: "white",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    marginRight: isLarge && "6px", // For large cards, shift left a bit, for some reason it's uncentered
+    margin: "0 auto",
+    position: "relative",
+    zIndex: isMobile ? 2 : "auto",
   };
 
   const innerStyle = {
@@ -112,6 +117,8 @@ const ArticleCard = ({
     overflow: "hidden",
     position: "relative",
     cursor: "pointer",
+    backgroundColor: isMobile ? "transparent" : "inherit",
+    margin: "0 auto",
   };
 
   const imageStyle = {
@@ -120,6 +127,7 @@ const ArticleCard = ({
     objectFit: "cover",
     filter: isHovered && !isMobile && !isPlaceholder ? "blur(10px)" : "blur(0)",
     transition: "filter 0.2s ease-in-out",
+    display: "block", // Prevent image spacing issues
   };
 
   const textOverlayStyle = {
@@ -143,7 +151,6 @@ const ArticleCard = ({
     fontSize: `${dimensions.authorSize}px`,
   };
 
-  // another mobile attempt... will just leave here for now
   const mobileTextStyle = {
     position: "absolute",
     bottom: "0",

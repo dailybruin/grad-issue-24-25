@@ -5,19 +5,19 @@ const DropdownButton = styled.div`
   position: fixed;
   top: 0px;
   left: 0px;
-  font-size: 24px;
-  color: #EBD9B6;
-  background-color: #A8894A;
+  font-size: 20px;
+  color: #ebd9b6;
+  background-color: #a8894a;
   padding: 3px;
   z-index: 1000;
-  border: 1px solid #A8894A;
+  border: 1px solid #a8894a;
   cursor: pointer;
 `;
 
 const CloseButton = styled.div`
-  font-size: 24px;
-  background-color: #A8894A;
-  color: #EBD9B6;
+  font-size: 20px;
+  background-color: #a8894a;
+  color: #ebd9b6;
   padding: 3px;
   cursor: pointer;
 `;
@@ -35,9 +35,9 @@ const HeaderReplacement = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  background-color: #EBD9B6;
+  background-color: #ebd9b6;
   padding: 8px;
-  border-bottom: 1px solid #A8894A;
+  border-bottom: 1px solid #a8894a;
 `;
 
 const NavItemGrid = styled.div`
@@ -52,31 +52,39 @@ const NavItem = styled.div`
   color: #826324;
   text-decoration: none;
   align-content: center;
-  background-color: #F1E7D3;
-  border: 5px solid #EBD9B6;
+  background-color: #f1e7d3;
+  border: 5px solid #ebd9b6;
   transition: background-color 0.3s ease, color 0.3s ease;
   font-family: Josefin Sans;
   font-weight: 800;
-  font-size: 17px;
+  font-size: 15px;
   line-height: 100%;
   letter-spacing: 0%;
   text-align: center;
 
   &:hover {
-    background-color: #F1E7D3;
+    background-color: #f1e7d3;
     border: 2px solid #826324;
     color: black;
     margin: 0px 0px;
   }
 `;
 
-
-
 const MobileNav = () => {
   const [isOpen, setIsOpen] = useState(false);
   const sections = [
-    "TITLE", "LETTER", "INTERACTIVE", "NEWS", "SPORTS", "ARTS",
-    "OPINION", "QUAD", "MULTIMEDIA", "PRIME", "-30-", "ABOUT"
+    "TITLE",
+    "LETTER",
+    "INTERACTIVE",
+    "NEWS",
+    "SPORTS",
+    "ARTS",
+    "OPINION",
+    "QUAD",
+    "MULTIMEDIA",
+    "PRIME",
+    "-30-",
+    "ABOUT",
   ];
 
   const handleScroll = (sectionId) => {
@@ -96,8 +104,10 @@ const MobileNav = () => {
         <WhenOpen>
           <>
             <HeaderReplacement>
-                {/* &#10005; = the X button */}
-              <CloseButton onClick={() => setIsOpen(false)}>&#10005;</CloseButton>
+              {/* &#10005; = the X button */}
+              <CloseButton onClick={() => setIsOpen(false)}>
+                &#10005;
+              </CloseButton>
             </HeaderReplacement>
             <NavItemGrid>
               {sections.map((section, index) => {

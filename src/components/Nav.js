@@ -8,11 +8,11 @@ const Container = styled("div")`
   position: fixed;
   z-index: 1000;
   align-content: center;
-  background-color: #EBD9B6;
-  border: 5px solid #EBD9B6;
+  background-color: #ebd9b6;
+  border: 5px solid #ebd9b6;
   padding: 5px 0;
   padding-top: 24px;
-  white-space: nowrap; 
+  white-space: nowrap;
 `;
 
 const Section = styled("a")`
@@ -22,31 +22,31 @@ const Section = styled("a")`
   color: #826324;
   text-decoration: none;
   align-content: center;
-  background-color: #F1E7D3;
-  border: 1px solid #EBD9B6;
+  background-color: #f1e7d3;
+  border: 1px solid #ebd9b6;
   transition: background-color 0.3s ease, color 0.3s ease;
   font-family: Josefin Sans;
   font-weight: 400;
-  font-size: 17px;
+  font-size: 15px;
   line-height: 100%;
   letter-spacing: 0%;
   text-align: center;
 
   @media (max-width: 1200px) {
-    font-size: 13px;
+    font-size: 11px;
   }
 
   @media (max-width: 900px) {
     margin-top: 5px;
-    font-size: 9px;
-  }
-
-  @media (max-width: 600px) {
     font-size: 8px;
   }
 
+  @media (max-width: 600px) {
+    font-size: 7px;
+  }
+
   &:hover {
-    background-color: #F1E7D3;
+    background-color: #f1e7d3;
     border: 2px solid #826324;
     color: black;
     margin: 0px 0px;
@@ -55,8 +55,18 @@ const Section = styled("a")`
 
 const Nav = () => {
   const sections = [
-    "TITLE", "LETTER", "INTERACTIVE", "NEWS", "SPORTS", "ARTS", 
-    "OPINION", "QUAD", "MULTIMEDIA", "PRIME", "-30-", "ABOUT"
+    "TITLE",
+    "LETTER",
+    "INTERACTIVE",
+    "NEWS",
+    "SPORTS",
+    "ARTS",
+    "OPINION",
+    "QUAD",
+    "MULTIMEDIA",
+    "PRIME",
+    "-30-",
+    "ABOUT",
   ];
 
   const handleScroll = (sectionId) => {

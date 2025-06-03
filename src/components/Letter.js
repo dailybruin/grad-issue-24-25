@@ -51,7 +51,7 @@ const LetterBox = styled.div`
 
 const LetterTitle = styled.h2`
   text-align: center;
-  font-size: ${(props) => Math.max(props.$scale * 36, 24)}px;
+  font-size: ${(props) => Math.max(props.$scale * 135, 20)}px;
   margin-bottom: ${(props) => Math.max(props.$scale * 2, 10)}px;
   color: #8b6b4a;
   font-weight: normal;
@@ -61,7 +61,7 @@ const LetterTitle = styled.h2`
 
 const LetterSubtitle = styled.h3`
   text-align: center;
-  font-size: ${(props) => Math.max(props.$scale * 24, 18)}px;
+  font-size: ${(props) => Math.max(props.$scale * 50, 16)}px;
   margin-bottom: ${(props) => Math.max(props.$scale * 16, 10)}px;
   color: #8b6b4a;
   font-weight: normal;
@@ -73,7 +73,7 @@ const Paragraph = styled.p`
   line-height: 1.5;
   margin-bottom: ${(props) => Math.max(props.$scale * 10, 8)}px;
   color: #8b6b4a;
-  font-size: ${(props) => Math.max(props.$scale * 16, 14)}px;
+  font-size: ${(props) => Math.max(props.$scale * 30, 12)}px;
   font-family: "Joan", serif;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -84,7 +84,7 @@ const Signature = styled.div`
   margin-top: ${(props) => Math.max(props.$scale * 16, 10)}px;
   line-height: 1.5;
   color: #8b6b4a;
-  font-size: ${(props) => Math.max(props.$scale * 16, 14)}px;
+  font-size: ${(props) => Math.max(props.$scale * 30, 12)}px;
   font-family: "Joan", serif;
   padding: 0 10px;
 `;
@@ -92,7 +92,7 @@ const Signature = styled.div`
 const Name = styled.span`
   display: block;
   margin-top: ${(props) => props.$scale * 2}px;
-  font-size: ${(props) => Math.max(props.$scale * 16, 14)}px;
+  font-size: ${(props) => Math.max(props.$scale * 30, 12)}px;
 `;
 
 const StyledLink = styled.a`
@@ -127,7 +127,7 @@ const Letter = ({ id }) => {
         <LetterSubtitle $scale={scale}>FROM THE EDITORS</LetterSubtitle>
         <Paragraph $scale={scale}>Dear readers,</Paragraph>
         <Paragraph $scale={scale}>
-          The word “unprecedented” loses its meaning more and more each year.
+          The word "unprecedented" loses its meaning more and more each year.
         </Paragraph>
         <Paragraph $scale={scale}>
           Our graduating class came of age during an unprecedented pandemic,{" "}
@@ -185,7 +185,7 @@ const Letter = ({ id }) => {
           The students graduating this year will not have had it easy.
         </Paragraph>
         <Paragraph $scale={scale}>
-          The Daily Bruin has showcased our community’s response to adversity.
+          The Daily Bruin has showcased our community's response to adversity.
           We have covered the pain that Bruins have felt. We have also covered
           the beauty. The pandemic sparked innovation that{" "}
           <StyledLink
@@ -201,7 +201,7 @@ const Letter = ({ id }) => {
           >
             Bunche Hall community kitchen
           </StyledLink>{" "}
-          to provide free meals. People reacted to January’s fires by{" "}
+          to provide free meals. People reacted to January's fires by{" "}
           <StyledLink
             href="https://dailybruin.com/2025/01/08/westwood-recreation-center-provides-shelter-essential-resources-amid-la-fires"
             rel="noopener noreferrer"
@@ -222,17 +222,17 @@ const Letter = ({ id }) => {
           >
             supporting their communities
           </StyledLink>
-          . UCLA women’s basketball{" "}
+          . UCLA women's basketball{" "}
           <StyledLink
             href="https://dailybruin.com/2025/01/15/ucla-womens-basketball-roars-to-best-ever-season-start-with-win-over-penn-state"
             rel="noopener noreferrer"
           >
             dedicated
           </StyledLink>{" "}
-          a performance marking their season start to January’s firefighters.
+          a performance marking their season start to January's firefighters.
         </Paragraph>
         <Paragraph $scale={scale}>
-          So it only seemed appropriate that we focus this year’s Graduation
+          So it only seemed appropriate that we focus this year's Graduation
           Issue on forging growth out of the ashes.
         </Paragraph>
         <Paragraph $scale={scale}>
@@ -243,17 +243,17 @@ const Letter = ({ id }) => {
           despair about what lies ahead.
         </Paragraph>
         <Paragraph $scale={scale}>
-          Even though we’re staring down the barrel of another unprecedented
+          Even though we're staring down the barrel of another unprecedented
           year, we will continue to fulfill our mission. The Daily Bruin will
-          keep telling our community’s stories. We will spotlight beauty. We
+          keep telling our community's stories. We will spotlight beauty. We
           will keep those in power accountable. We will give a voice to people
-          who don’t have one. We will fight for diversity and inclusion. We will
+          who don't have one. We will fight for diversity and inclusion. We will
           make the seniors who have sacrificed to keep our paper going proud of
           us.
         </Paragraph>
         <Paragraph $scale={scale}>
-          We’re confident that out of the flames of unprecedented destruction,
-          our students will bring beauty to the world – it's what we’ve been
+          We're confident that out of the flames of unprecedented destruction,
+          our students will bring beauty to the world – it's what we've been
           taught to do. And through it all, our writers, coders, reporters,
           presenters, photojournalists, editors, artists and videographers will
           keep telling those stories.
