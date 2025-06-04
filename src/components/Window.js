@@ -108,7 +108,7 @@ const Window = ({
           }}
         >
           {/* Black filler for each window, moved behind the background */}
-          <div
+          {isMobile && (<div
             style={{
               backgroundColor: "black",
               padding: "0px",
@@ -122,7 +122,7 @@ const Window = ({
               bottom: isMobile ? "18px" : `${65 * scale}px`,
               zIndex: 1,
             }}
-          />
+          />)}
           <div style={backgroundStyle}>
             <div style={overlayContainer}>
               {rows.map((row, rowIndex) => (

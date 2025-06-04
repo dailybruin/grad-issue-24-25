@@ -30,7 +30,7 @@ const ArticleCard = ({
     return (
       <div
         style={{
-          backgroundColor: "black",
+          backgroundColor: !isMobile ? "black" : "transparent",
           width: `${cardWidth * scale}px`,
           height: `${cardHeight * scale}px`,
           display: "flex",
