@@ -43,7 +43,7 @@ const ArticleCard = ({
             backgroundColor: placeholderColor,
             width: `${baseInner * scale}px`,
             height: `${baseInner * scale}px`,
-            borderRadius: `${CARD_BORDER_ROUND_PX}px`,
+            borderRadius: `${isMobile ? CARD_BORDER_ROUND_PX-12 : CARD_BORDER_ROUND_PX}px`,
           }}
         />
       </div>
