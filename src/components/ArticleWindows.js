@@ -229,8 +229,9 @@ const Thirty = ({ articles }) => {
     "#C69394"
   ]);
 
-  const updatedArticlesMobile = insertPlaceholders(temp33articles2, [33], [
-    "#82A8C7"
+  const updatedArticlesMobile = insertPlaceholders(temp33articles2, [30,33], [
+    "#82A8C7",
+    "#C69394"
   ]);
 
   return (
