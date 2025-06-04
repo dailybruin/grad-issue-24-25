@@ -72,7 +72,9 @@ function App() {
           <>
             <Nav />
             <Header />
-            <Landing/>
+            <div id="title">
+                <Landing />
+            </div>
           </>
         )}
         <ArticleGrid props={data} />
