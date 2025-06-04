@@ -10,15 +10,16 @@ import Mosaic from './mosaic.js';
 
 const GridContainer = styled.div`
   height: 100%;
-  color: #f0e8ce;
-  text-align: center;
+  width: 100%;
+  background-color: transparent;
   padding-top: 10%;
-  position: relative;
+  color: #f0e8ce;
   background-image: url(${(props) =>
     props.$isMobile ? mobileBackground : desktopBackground});
-  background-repeat: no-repeat;
+  background-repeat:no-repeat;
+  background-position: center bottom;
+  background-attachment: scroll;
   background-size: cover;
-  background-position: center;
 `;
 
 const ArticleGrid = ({ props }) => {
