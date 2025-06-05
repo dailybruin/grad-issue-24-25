@@ -12,7 +12,8 @@ const Container = styled.div`
   padding-bottom: 40px;
   margin-left: 14.5%;
 
-  @media (max-width: 768px) { /* Grouping smaller screens */
+  @media (max-width: 768px) {
+    /* Grouping smaller screens */
     width: 65%;
     margin-left: 17.5%;
   }
@@ -88,10 +89,13 @@ const StyledLink = styled.a`
   color: #8b6b4a;
   text-decoration: underline;
   font-family: "Joan", serif;
-
   &:hover {
     text-decoration: none;
   }
+`;
+
+const Spacer = styled.div`
+  height: ${(props) => Math.max(props.$scale * 60, 60)}px;
 `;
 
 const Letter = ({ id }) => {
@@ -247,6 +251,7 @@ const Letter = ({ id }) => {
           presenters, photojournalists, editors, artists and videographers will
           keep telling those stories.
         </Paragraph>
+        <Spacer $scale={scale} />
         <Signature $scale={scale}>
           Yours faithfully,
           <Name $scale={scale}>Dylan Winward | Editor in chief</Name>

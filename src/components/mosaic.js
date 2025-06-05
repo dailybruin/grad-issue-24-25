@@ -2,8 +2,39 @@ import React, { useEffect, useRef, useState } from "react";
 import * as joint from "jointjs";
 import styled from "styled-components";
 import mosaicImg from "../images/mosaic.png";
-
 const V = joint.V;
+
+const PageContainer = styled.div`
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 125px;
+  width: 80%;
+`;
+
+const ContentContainer = styled.div`
+  background-color: #f1e7d3;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 50px;
+  width: 85%;
+`;
+
+const Header = styled.h1`
+  text-align: center;
+  color: #826324;
+  font-size: 2rem;
+  font-family: "Joan", serif;
+`;
+
+const SubHeader = styled.h2`
+  text-align: center;
+  color: #826324;
+  font-size: 1.2rem;
+  font-family: "Joan", serif;
+`;
 
 const Container = styled.div`
   position: relative;
@@ -11,12 +42,18 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
+  z-index: 10;
+  overflow: visible;
+  justify-content: center;
 `;
 
 const MosaicContainer = styled.div`
-  width: 100%;
-  max-width: 975px;
+  width: 125%;
+  max-width: 1300px;
   margin: 0 auto;
+  position: relative;
+  z-index: 10;
+  overflow: visible;
 `;
 
 export default function Mosaic() {
@@ -107,11 +144,11 @@ export default function Mosaic() {
     );
 
     const GRID = 10;
-    const PADDING = 75;
+    const PADDING = 20;
     const TAB_RATIO = 0.15;
     const IMAGE_ID = "puzzle-image";
     const ROWS = 3;
-    const COLS = 3;
+    const COLS = 5;
 
     const snappedWidth =
       Math.floor((containerWidth - 2 * PADDING) / (COLS * GRID)) * COLS * GRID;
@@ -131,10 +168,13 @@ export default function Mosaic() {
       clickThreshold: 5,
       background: { color: "transparent" },
       cellViewNamespace: joint.shapes,
+      z: 10,
+      overflow: "visible",
     });
 
     paper.on("cell:pointerdown", (pieceView) => {
       pieceView.model.toFront();
+      pieceView.model.set("z", 11);
       pieceView.highlight("polygon");
     });
     paper.on("cell:pointerup", (pieceView) => {
@@ -165,6 +205,7 @@ export default function Mosaic() {
               width: pieceSize,
               height: pieceSize,
             },
+            z: 10,
             tabSize: TAB_RATIO * pieceSize,
             attrs: {
               polygon: {
@@ -204,10 +245,16 @@ export default function Mosaic() {
   }, [containerWidth]);
 
   return (
-    <Container>
-      <MosaicContainer>
-        <div ref={paperRef} id="paper" style={{ margin: "0 auto" }} />
-      </MosaicContainer>
-    </Container>
+    <PageContainer>
+      <ContentContainer>
+        <Header>Then vs. Now: Changes from 2021-2022 to 2024-2025</Header>
+        <SubHeader>Drag and drop the pieces to complete the puzzle!</SubHeader>
+        <Container>
+          <MosaicContainer>
+            <div ref={paperRef} id="paper" style={{ margin: "0 auto" }} />
+          </MosaicContainer>
+        </Container>
+      </ContentContainer>
+    </PageContainer>
   );
 }
