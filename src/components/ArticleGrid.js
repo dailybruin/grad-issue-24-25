@@ -20,6 +20,10 @@ const GridContainer = styled.div`
   background-position: center bottom;
   background-attachment: scroll;
   background-size: cover;
+
+  // @supports (-webkit-touch-callout: none) {
+  //   background-image: none;
+  // }
 `;
 
 const ArticleGrid = ({ props }) => {
