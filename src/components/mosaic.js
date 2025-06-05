@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import * as joint from "jointjs";
 import styled from "styled-components";
 import mosaicImg from "../images/mosaic.png";
+import { WINDOW_WIDTH } from "./constants.js";
 const V = joint.V;
 
 const PageContainer = styled.div`
@@ -10,30 +11,20 @@ const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40px 125px;
-  width: 80%;
+  width: 100%;
+  padding: 40px 0;
 `;
 
 const ContentContainer = styled.div`
   background-color: #f1e7d3;
-  max-width: 1300px;
+  width: 71%;
   margin: 0 auto;
   padding: 50px;
-  width: 85%;
-`;
 
-const Header = styled.h1`
-  text-align: center;
-  color: #826324;
-  font-size: 2rem;
-  font-family: "Joan", serif;
-`;
-
-const SubHeader = styled.h2`
-  text-align: center;
-  color: #826324;
-  font-size: 1.2rem;
-  font-family: "Joan", serif;
+  @media (max-width: 768px) {
+    width: 65%;
+    padding: 20px;
+  }
 `;
 
 const Container = styled.div`
@@ -43,29 +34,53 @@ const Container = styled.div`
   align-items: center;
   width: 100%;
   z-index: 10;
-  overflow: visible;
-  justify-content: center;
+  overflow: hidden;
 `;
 
 const MosaicContainer = styled.div`
-  width: 125%;
-  max-width: 1300px;
+  width: 100%;
   margin: 0 auto;
   position: relative;
   z-index: 10;
-  overflow: visible;
+  overflow: hidden;
+`;
+
+const Header = styled.h1`
+  text-align: center;
+  color: #826324;
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  font-family: "Joan", serif;
+  margin-bottom: 1rem;
+`;
+
+const SubHeader = styled.h2`
+  text-align: center;
+  color: #826324;
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
+  font-family: "Joan", serif;
+  margin-bottom: 2rem;
 `;
 
 export default function Mosaic() {
   const paperRef = useRef(null);
   const [containerWidth, setContainerWidth] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
     const handleResize = () => {
+      const width = window.innerWidth;
+      setIsMobile(
+        /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+          navigator.userAgent
+        ) || width < 768
+      );
+      setWindowWidth(width);
       if (paperRef.current?.parentElement) {
         setContainerWidth(paperRef.current.parentElement.offsetWidth);
       }
     };
+
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
@@ -144,14 +159,22 @@ export default function Mosaic() {
     );
 
     const GRID = 10;
-    const PADDING = 20;
+    const PADDING = isMobile ? 10 : 20;
     const TAB_RATIO = 0.15;
     const IMAGE_ID = "puzzle-image";
     const ROWS = 3;
     const COLS = 5;
 
-    const snappedWidth =
-      Math.floor((containerWidth - 2 * PADDING) / (COLS * GRID)) * COLS * GRID;
+    const scale = Math.min(windowWidth / WINDOW_WIDTH, 1);
+    const effectivePadding = PADDING * scale;
+
+    const snappedWidth = Math.min(
+      Math.floor((containerWidth - 2 * effectivePadding) / (COLS * GRID)) *
+        COLS *
+        GRID,
+      containerWidth - 2 * effectivePadding
+    );
+
     const pieceSize = snappedWidth / COLS;
     const width = pieceSize * COLS;
     const height = pieceSize * ROWS;
@@ -161,8 +184,8 @@ export default function Mosaic() {
     const paper = new joint.dia.Paper({
       el: paperRef.current,
       model: graph,
-      width: width + 2 * PADDING,
-      height: height + 2 * PADDING,
+      width: width + 2 * effectivePadding,
+      height: height + 2 * effectivePadding,
       gridSize: GRID,
       async: true,
       clickThreshold: 5,
@@ -242,7 +265,7 @@ export default function Mosaic() {
 
     const pieces = generatePuzzle();
     shufflePuzzle(pieces);
-  }, [containerWidth]);
+  }, [containerWidth, windowWidth, isMobile]);
 
   return (
     <PageContainer>
