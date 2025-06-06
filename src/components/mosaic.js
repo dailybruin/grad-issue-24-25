@@ -13,6 +13,11 @@ const PageContainer = styled.div`
   align-items: center;
   width: 100%;
   padding: 40px 0;
+
+  @media (max-width: 768px) {
+    padding: 20px 0;
+    min-height: auto;
+  }
 `;
 
 const ContentContainer = styled.div`
@@ -22,8 +27,9 @@ const ContentContainer = styled.div`
   padding: 50px;
 
   @media (max-width: 768px) {
-    width: 65%;
-    padding: 20px;
+    width: 95%;
+    padding: 10px;
+    margin-bottom: 20px;
   }
 `;
 
@@ -33,16 +39,24 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  z-index: 10;
-  overflow: hidden;
+  z-index: 2;
+  overflow: visible;
+
+  @media (max-width: 768px) {
+    margin-bottom: 0;
+  }
 `;
 
 const MosaicContainer = styled.div`
   width: 100%;
   margin: 0 auto;
   position: relative;
-  z-index: 10;
-  overflow: hidden;
+  z-index: 2;
+  overflow: visible;
+
+  @media (max-width: 768px) {
+    margin-bottom: 0;
+  }
 `;
 
 const Header = styled.h1`
@@ -51,6 +65,11 @@ const Header = styled.h1`
   font-size: clamp(1.2rem, 3vw, 2rem);
   font-family: "Joan", serif;
   margin-bottom: 1rem;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
 `;
 
 const SubHeader = styled.h2`
@@ -59,6 +78,11 @@ const SubHeader = styled.h2`
   font-size: clamp(0.9rem, 2vw, 1.2rem);
   font-family: "Joan", serif;
   margin-bottom: 2rem;
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+  }
 `;
 
 export default function Mosaic() {
@@ -132,7 +156,7 @@ export default function Mosaic() {
                 V(
                   "pattern",
                   {
-                    id,
+                    id: id,
                     x: -tabSize,
                     y: -tabSize,
                     width: width + 2 * tabSize,
@@ -159,13 +183,13 @@ export default function Mosaic() {
     );
 
     const GRID = 10;
-    const PADDING = isMobile ? 10 : 20;
+    const PADDING = isMobile ? 5 : 20;
     const TAB_RATIO = 0.15;
     const IMAGE_ID = "puzzle-image";
     const ROWS = 3;
     const COLS = 5;
 
-    const scale = Math.min(windowWidth / WINDOW_WIDTH, 1);
+    const scale = isMobile ? 1.5 : Math.min(windowWidth / WINDOW_WIDTH, 1);
     const effectivePadding = PADDING * scale;
 
     const snappedWidth = Math.min(
@@ -214,6 +238,38 @@ export default function Mosaic() {
       height,
     }).appendTo(paper.defs);
 
+    const overlay = V("image", {
+      "xlink:href": mosaicImg,
+      x: effectivePadding,
+      y: effectivePadding,
+      opacity: 0.2,
+      width,
+      height,
+      "pointer-events": "none",
+    });
+    paper.svg.prepend(overlay.node);
+
+    for (let r = 0; r < ROWS; r++) {
+      for (let c = 0; c < COLS; c++) {
+        const x = effectivePadding + c * pieceSize;
+        const y = effectivePadding + r * pieceSize;
+
+        const gridBox = new joint.shapes.standard.Rectangle();
+        gridBox.position(x, y);
+        gridBox.resize(pieceSize, pieceSize);
+        gridBox.attr({
+          body: {
+            fill: "none",
+            stroke: "#8F6A20",
+            strokeWidth: 2,
+          },
+          label: { text: "" },
+        });
+        gridBox.set("z", 1);
+        gridBox.addTo(graph);
+      }
+    }
+
     function generatePuzzle() {
       graph.clear();
       const pieces = [];
@@ -221,14 +277,14 @@ export default function Mosaic() {
         for (let c = 0; c < COLS; c++) {
           const piece = new JigsawPiece({
             position: {
-              x: PADDING + c * pieceSize,
-              y: PADDING + r * pieceSize,
+              x: effectivePadding + c * pieceSize,
+              y: effectivePadding + r * pieceSize,
             },
             size: {
               width: pieceSize,
               height: pieceSize,
             },
-            z: 10,
+            z: 100,
             tabSize: TAB_RATIO * pieceSize,
             attrs: {
               polygon: {
@@ -248,8 +304,10 @@ export default function Mosaic() {
 
     function shufflePuzzle(pieces) {
       for (let piece of pieces) {
-        const randomX = PADDING + Math.random() * width - pieceSize / 2;
-        const randomY = PADDING + Math.random() * height - pieceSize / 2;
+        const randomX =
+          effectivePadding + Math.random() * width - pieceSize / 2;
+        const randomY =
+          effectivePadding + Math.random() * height - pieceSize / 2;
         const snapped = joint.g.Point(randomX, randomY).snapToGrid(GRID);
         piece.transition("position", snapped.toJSON(), {
           delay: 0,
