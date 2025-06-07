@@ -130,7 +130,7 @@ const Window = ({
                   {row.map((article, cardIndex) => (
                     <ArticleCard
                       key={`${rowIndex}-${cardIndex}`}
-                      image={bubbles}
+                      image={article.article_image}
                       article_url={article.article_url}
                       article_title={article.article_title}
                       author_byline={article.article_byline}
