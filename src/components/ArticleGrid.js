@@ -56,14 +56,14 @@ const ArticleGrid = ({ props }) => {
             <div id="interactive">
               <Mosaic/>
             </div>
-            <News articles={props.articles}/>
-            <Sports articles={props.articles}/>
-            <Arts articles={props.articles}/>
-            <Opinion articles={props.articles}/>
-            <TheQuad articles={props.articles}/>
-            <Multimedia articles={props.articles}/>
-            <Prime articles={props.articles}/>
-            <Thirty articles={props.articles}/>
+            <News articles={props.news_articles}/>
+            <Sports articles={props.sports_articles}/>
+            <Arts articles={props.arts_articles}/>
+            <Opinion articles={props.opinion_articles}/>
+            <TheQuad articles={props.quad_articles}/>
+            <Multimedia articles={props.multimedia_articles}/>
+            <Prime articles={props.prime_articles}/>
+            <Thirty articles={props.thirty_articles}/>
              <div id="about">
                 <About />
             </div>
