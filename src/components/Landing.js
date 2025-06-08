@@ -9,6 +9,7 @@ const Container = styled.div`
   align-items: center;
   background-color: black;
   padding-top: 32px;
+  position: relative;
 `;
 
 const BackgroundVideo = styled.video`
@@ -19,16 +20,38 @@ const BackgroundVideo = styled.video`
   pointer-events: none;
 `;
 
+const Credits = styled.div`
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  text-align: left;
+  color: #333333;
+  font-family: "Joan", serif;
+  font-size: 10px;
+  padding: 3px 3px;
+  background-color: #d9d9d9;
+  max-width: 400px;
+
+  @media (max-width: 1200px) {
+    font-size: 9px;
+    padding: 2px 2px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 8px;
+    padding: 2px 2px;
+    max-width: 300px;
+  }
+`;
+
 const Landing = () => {
   return (
     <Container>
-      <BackgroundVideo
-        src={LandingVideo}
-        autoPlay
-        loop
-        muted
-        playsInline
-      />
+      <BackgroundVideo src={LandingVideo} autoPlay loop muted playsInline />
+      <Credits>
+        Photos by Daily Bruin staff. Design by Katie Azuma/Daily Bruin.
+        Animation by Helen Juwon Park/Illustrations director.
+      </Credits>
     </Container>
   );
 };
