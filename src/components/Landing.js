@@ -49,8 +49,9 @@ const Landing = () => {
     <Container>
       <BackgroundVideo src={LandingVideo} autoPlay loop muted playsInline />
       <Credits>
-        Photos by Daily Bruin staff. Design by Katie Azuma/Daily Bruin.
-        Animation by Helen Juwon Park/Illustrations director.
+        Animation by Kaylen Ho/Daily Bruin staff, Helen Juwon Park/Illustrations
+        director. Video by Max Davis-Housefield/Daily Bruin senior staff. Photos
+        by Daily Bruin staff.
       </Credits>
     </Container>
   );
