@@ -84,8 +84,8 @@ const Footer = () => {
         </a>
         <p>
           Built with Suzy's ♥ in Kerckhoff 118 by Samantha Jiao, Narek
-          Germirlian, and Evelyn Cho. Designed by Crystal Tompkins, Karina
-          Aronson, Katie Azuma and Rachel Yokota, illustrated by Helen Juwon
+          Germirlian and Evelyn Cho. Designed by Crystal Tompkins, Karina
+          Aronson, Katie Azuma and Rachel Yokota. Illustrated by Helen Juwon
           Park.
         </p>
       </Socials>

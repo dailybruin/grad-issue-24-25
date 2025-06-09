@@ -32,16 +32,18 @@ const News = ({ articles }) => {
 
   // temporarily hard coding to match 15 articles sizes for TESTING purposes
   const temp15articles = [...articles];
-  
+
   while (temp15articles.length < 15) {
-    temp15articles.push(...articles); 
+    temp15articles.push(...articles);
   }
   const temp15articles2 = temp15articles.slice(0, 15);
 
   // FIXME: REMOVE PLACEHOLDER??? CHECK FIGMA
-  const updatedArticlesMobile = insertPlaceholders(temp15articles2, [14], [
-    "#82A8C7"
-  ]);
+  const updatedArticlesMobile = insertPlaceholders(
+    temp15articles2,
+    [14],
+    ["#82A8C7"]
+  );
 
   return (
     <Window
@@ -49,8 +51,8 @@ const News = ({ articles }) => {
       backgroundImage={newsBack}
       backgroundImageMobile={newsBackMobile}
       windowTitle="NEWS"
-      articles={temp15articles2}  // FIXME: later fix this
-      articlesMobile={updatedArticlesMobile}  // FIXME: later fix this
+      articles={temp15articles2} // FIXME: later fix this
+      articlesMobile={updatedArticlesMobile} // FIXME: later fix this
       shrinksAt={1051}
     />
   );
@@ -63,14 +65,14 @@ const Sports = ({ articles }) => {
   // FIXME: later fix this
   // temporarily hard coding to match 14 articles sizes for TESTING purposes
   const temp15articles = [...articles];
-  
+
   while (temp15articles.length < 14) {
-    temp15articles.push(...articles); 
+    temp15articles.push(...articles);
   }
   const temp15articles2 = temp15articles.slice(0, 14);
 
   const updatedArticles = insertPlaceholders(temp15articles2, insertIndex, [
-    "#83AD83"
+    "#83AD83",
   ]);
 
   return (
@@ -80,27 +82,29 @@ const Sports = ({ articles }) => {
       backgroundImageMobile={sportsBackMobile}
       windowTitle="SPORTS"
       articles={updatedArticles}
-      articlesMobile={temp15articles2}  // No placeholders // FIXME: later fix this
+      articlesMobile={temp15articles2} // No placeholders // FIXME: later fix this
       shrinksAt={1053}
     />
   );
 };
 
-const Arts = ( { articles }) => {
+const Arts = ({ articles }) => {
   // ten art articles
   articles = articles.slice(0, 9);
   const insertIndex = [0, 3, 8];
-  const insertIndexMobile = [5]
+  const insertIndexMobile = [5];
 
   const updatedArticles = insertPlaceholders(articles, insertIndex, [
     "#C69394",
     "#83AD83",
-    "#D0CD84"
+    "#D0CD84",
   ]);
 
-  const updatedArticlesMobile = insertPlaceholders(articles, insertIndexMobile, [
-    "#82A8C7"
-  ]);
+  const updatedArticlesMobile = insertPlaceholders(
+    articles,
+    insertIndexMobile,
+    ["#82A8C7"]
+  );
 
   return (
     <Window
@@ -115,21 +119,23 @@ const Arts = ( { articles }) => {
   );
 };
 
-const Opinion = ( { articles }) => {
-  // three opinion articles 
+const Opinion = ({ articles }) => {
+  // three opinion articles
   articles = articles.slice(0, 3);
-  const insertIndex = [1,2,4];
-  const insertIndexMobile = [1]
+  const insertIndex = [1, 2, 4];
+  const insertIndexMobile = [1];
 
   const updatedArticles = insertPlaceholders(articles, insertIndex, [
     "#D0CD84",
     "#83AD83",
-    "#82A8C7"
+    "#82A8C7",
   ]);
 
-  const updatedArticlesMobile = insertPlaceholders(articles, insertIndexMobile, [
-    "#D0CD84"
-  ]);
+  const updatedArticlesMobile = insertPlaceholders(
+    articles,
+    insertIndexMobile,
+    ["#D0CD84"]
+  );
 
   return (
     <Window
@@ -146,20 +152,22 @@ const Opinion = ( { articles }) => {
 };
 
 const TheQuad = ({ articles }) => {
-  // three quad articles 
+  // three quad articles
   articles = articles.slice(0, 3);
-  const insertIndex = [0,1,2];
-  const insertIndexMobile = [2]
+  const insertIndex = [0, 1, 2];
+  const insertIndexMobile = [2];
 
   const updatedArticles = insertPlaceholders(articles, insertIndex, [
     "#D0CD84",
     "#83AD83",
-    "#C69394"
+    "#C69394",
   ]);
 
-  const updatedArticlesMobile = insertPlaceholders(articles, insertIndexMobile, [
-    "#C69394"
-  ]);
+  const updatedArticlesMobile = insertPlaceholders(
+    articles,
+    insertIndexMobile,
+    ["#C69394"]
+  );
 
   return (
     <Window
@@ -175,13 +183,13 @@ const TheQuad = ({ articles }) => {
 };
 
 const Multimedia = ({ articles }) => {
-  // 15 multimedia articles 
+  // 15 multimedia articles
 
   // temporarily hard coding to match 15 articles sizes for TESTING purposes
   const temp15articles = [...articles];
-  
+
   while (temp15articles.length < 15) {
-    temp15articles.push(...articles); 
+    temp15articles.push(...articles);
   }
   const temp15articles2 = temp15articles.slice(0, 15);
   const temp16articles = temp15articles.slice(0, 16);
@@ -216,23 +224,26 @@ const Prime = ({ articles }) => {
 };
 
 const Thirty = ({ articles }) => {
-  // 33 thirty articles 
+  // 33 thirty articles
 
   // temporarily hard coding to match 32 articles sizes for TESTING purposes
   const temp33articles = [...articles];
-  
-  while (temp33articles.length < 32) {
-    temp33articles.push(...articles); 
-  }
-  const temp33articles2 = temp33articles.slice(0, 32);
-  const updatedArticles = insertPlaceholders(temp33articles2, [33], [
-    "#C69394"
-  ]);
 
-  const updatedArticlesMobile = insertPlaceholders(temp33articles2, [30,33], [
-    "#82A8C7",
-    "#C69394"
-  ]);
+  while (temp33articles.length < 31) {
+    temp33articles.push(...articles);
+  }
+  const temp33articles2 = temp33articles.slice(0, 31);
+  const updatedArticles = insertPlaceholders(
+    temp33articles2,
+    [32,33],
+    ["#C69394", "#C69394"]
+  );
+
+  const updatedArticlesMobile = insertPlaceholders(
+    temp33articles2,
+    [30, 32, 33],
+    ["#82A8C7", "#C69394", "#C69394"]
+  );
 
   return (
     <Window
@@ -241,7 +252,7 @@ const Thirty = ({ articles }) => {
       backgroundImageMobile={thirtyBackMobile}
       windowTitle="THIRTY"
       articles={updatedArticles} // FIXME: later fix this
-      articlesMobile={updatedArticlesMobile}  // FIXME: later fix this
+      articlesMobile={updatedArticlesMobile} // FIXME: later fix this
       shrinksAt={1064}
       incCardHeightBy={3}
     />
