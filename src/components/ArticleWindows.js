@@ -229,20 +229,20 @@ const Thirty = ({ articles }) => {
   // temporarily hard coding to match 32 articles sizes for TESTING purposes
   const temp33articles = [...articles];
 
-  while (temp33articles.length < 31) {
+  while (temp33articles.length < 32) {
     temp33articles.push(...articles);
   }
-  const temp33articles2 = temp33articles.slice(0, 31);
+  const temp33articles2 = temp33articles.slice(0, 32);
   const updatedArticles = insertPlaceholders(
     temp33articles2,
-    [32,33],
-    ["#C69394", "#C69394"]
+    [33],
+    ["#C69394"]
   );
 
   const updatedArticlesMobile = insertPlaceholders(
     temp33articles2,
-    [30, 32, 33],
-    ["#82A8C7", "#C69394", "#C69394"]
+    [30, 33],
+    ["#82A8C7", "#C69394"]
   );
 
   return (
